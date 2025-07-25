@@ -1,5 +1,5 @@
-﻿using Caster.Parser;
-using RtcmSharp.RtcmDatafields;
+﻿using RtcmSharp.RtcmDatafields;
+using RtcmSharp.Bit;
 
 namespace RtcmSharp.RtcmMessageTypes
 {
@@ -21,7 +21,7 @@ namespace RtcmSharp.RtcmMessageTypes
 	GNSS_006_BIT_2    | BIT  |  2 |    0   | Quarter Cycle Indicator
 	DF_005_INT_38_S   | INT  | 38 | 0.0001 | Antenna Ref. Point, ECEF-Z
 	------------------------------------------------------------------------------*/
-    internal class Rtcm1005 : BaseMessage
+    public class Rtcm1005 : BaseMessage
     {
         public DF_002_UINT_12 m_StationID { get; }
         public GNSS_002_UINT_6 m_ItrfYear { get; }
@@ -37,18 +37,18 @@ namespace RtcmSharp.RtcmMessageTypes
         public DF_005_INT_38_S m_AntennaECEF_Z { get; }
         public Rtcm1005(Bitstream _bitStream)
         {
-            m_MessageType = (ushort)_bitStream.ReadBitsUnsigned(12);
-            m_StationID = (ushort)_bitStream.ReadBitsUnsigned(12);
-            m_ItrfYear = (byte)_bitStream.ReadBitsUnsigned(6);
-            m_GpsIndicator = (byte)_bitStream.ReadBitsUnsigned(1);
-            m_GlonassIndicator = (byte)_bitStream.ReadBitsUnsigned(1);
-            m_GalileoIndicator = (byte)_bitStream.ReadBitsUnsigned(1);
-            m_ReferenceStationIndicator = (byte)_bitStream.ReadBitsUnsigned(1);
+            m_MessageType = _bitStream.ReadBitsUnsigned(12);
+            m_StationID = _bitStream.ReadBitsUnsigned(12);
+            m_ItrfYear = _bitStream.ReadBitsUnsigned(6);
+            m_GpsIndicator = _bitStream.ReadBitsUnsigned(1);
+            m_GlonassIndicator = _bitStream.ReadBitsUnsigned(1);
+            m_GalileoIndicator = _bitStream.ReadBitsUnsigned(1);
+            m_ReferenceStationIndicator = _bitStream.ReadBitsUnsigned(1);
             m_AntennaECEF_X = _bitStream.ReadBitsTwosComplement(38);
-            m_SingleReceiverOscillatorIndicator = (byte)_bitStream.ReadBitsUnsigned(1);
-            m_ReservedBit = (byte)_bitStream.ReadBitsUnsigned(1);
+            m_SingleReceiverOscillatorIndicator = _bitStream.ReadBitsUnsigned(1);
+            m_ReservedBit = _bitStream.ReadBitsUnsigned(1);
             m_AntennaECEF_Y = _bitStream.ReadBitsTwosComplement(38);
-            m_QuarterCycleIndicator = (byte)_bitStream.ReadBitsUnsigned(2);
+            m_QuarterCycleIndicator = _bitStream.ReadBitsUnsigned(2);
             m_AntennaECEF_Z = _bitStream.ReadBitsTwosComplement(38);
         }
     }

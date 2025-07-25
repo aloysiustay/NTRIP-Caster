@@ -1,6 +1,5 @@
-﻿using Caster.Parser;
-using RtcmSharp.RtcmDatafields;
-
+﻿using RtcmSharp.RtcmDatafields;
+using RtcmSharp.Bit;
 namespace RtcmSharp.RtcmMessageTypes
 {
     /*========= 1006: Stationary RTK Reference Station ARP =======================*/
@@ -21,12 +20,12 @@ namespace RtcmSharp.RtcmMessageTypes
 	DF_005_INT_38_S   | INT  | 38 | 0.0001 | Antenna Ref. Point, ECEF-Z
 	DF_006_UINT_16_S  | UINT | 16 | 0.0001 | Antenna Height
 	------------------------------------------------------------------------------*/
-    internal class Rtcm1006 : Rtcm1005 
+    public class Rtcm1006 : Rtcm1005 
     {
         public DF_006_UINT_16_S m_AntennaHeight { get; }
         public Rtcm1006(Bitstream _bitStream) : base(_bitStream)
         {
-            m_AntennaHeight = (ushort)_bitStream.ReadBitsUnsigned(16);
+            m_AntennaHeight = _bitStream.ReadBitsUnsigned(16);
         }
     }
 }

@@ -1,7 +1,53 @@
-﻿namespace RtcmSharp
+﻿using RtcmSharp.Bit;
+using RtcmSharp.RtcmMessageTypes;
+using RtcmSharp.RtcmDatafields;
+
+namespace RtcmSharp
 {
-    internal static class RtcmUtils
+    public static class RtcmUtils
     {
+        public static BaseMessage ProcessMessage(RtcmPacket _packet)
+        {
+            Bitstream bitStream = new Bitstream(_packet.m_Payload.ToArray());
+            ushort messageType = (ushort)bitStream.ReadBitsUnsigned(12);
+            bitStream.Reset();
+            switch (messageType)
+            {
+                case 1005:
+                    return new Rtcm1005(bitStream);
+                case 1006:
+                    return new Rtcm1006(bitStream);
+                case 1008:
+                    return new Rtcm1008(bitStream);
+                case 1019:
+                    return new Rtcm1019(bitStream);
+                case 1020:
+                    return new Rtcm1020(bitStream);
+                case 1033:
+                    return new Rtcm1033(bitStream);
+                case 1042:
+                    return new Rtcm1042(bitStream);
+                case 1044:
+                    return new Rtcm1044(bitStream);
+                case 1045:
+                    return new Rtcm1045(bitStream);
+                case 1046:
+                    return new Rtcm1046(bitStream);
+                case 1075:
+                    return new Rtcm1075(bitStream);
+                case 1085:
+                    return new Rtcm1085(bitStream);
+                case 1095:
+                    return new Rtcm1095(bitStream);
+                case 1115:
+                    return new Rtcm1115(bitStream);
+                case 1125:
+                    return new Rtcm1125(bitStream);
+            }
+
+            return null;
+        }
+
         private static readonly uint[] table_CRC24Q =
         {
             0x000000,0x864CFB,0x8AD50D,0x0C99F6,0x93E6E1,0x15AA1A,0x1933EC,0x9F7F17,

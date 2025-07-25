@@ -7,6 +7,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_001_UINT_27(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_001_UINT_27(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_001_UINT_27(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_002", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "No. of GLONASS Satellite Signals Processed")] //DF035
@@ -14,6 +15,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_002_UINT_5(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_002_UINT_5(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_002_UINT_5(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_003", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS Divergence-free Smoothing Indicator")] //DF036
@@ -21,6 +23,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_003_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_003_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_003_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_004", dataType: "BIT", bitLength: 3, scaleFactor: 0, description: "GLONASS Smoothing Interval")] //DF037
@@ -28,6 +31,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_004_BIT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_004_BIT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_004_BIT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_005", dataType: "UINT", bitLength: 6, scaleFactor: 0, description: "GLONASS Satellite ID (Satellite Slot Number)")] //DF038
@@ -35,6 +39,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_005_UINT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_005_UINT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_005_UINT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_006", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS L1 Code Indicator")] //DF039
@@ -42,6 +47,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_006_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_006_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_006_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_007", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "GLONASS Satellite Frequency Channel Number")] //DF040
@@ -49,6 +55,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_007_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_007_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_007_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_008", dataType: "UINT", bitLength: 25, scaleFactor: 0.02, description: "GLONASS L1 Pseudorange")] //DF041
@@ -56,6 +63,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_008_UINT_25_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_008_UINT_25_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_008_UINT_25_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_009", dataType: "INT", bitLength: 20, scaleFactor: 0.0005, description: "GLONASS L1 PhaseRange - L1 Pseudorange")] //DF042
@@ -63,6 +71,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_009_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_009_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_009_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_010", dataType: "UINT", bitLength: 7, scaleFactor: 0, description: "GLONASS L1 Lock Time Indicator")] //DF043
@@ -70,6 +79,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_010_UINT_7(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_010_UINT_7(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_010_UINT_7(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_011", dataType: "UINT", bitLength: 7, scaleFactor: 0, description: "GLONASS Integer L1 Pseudorange Modulus Ambiguity")] //DF044
@@ -77,6 +87,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_011_UINT_7(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_011_UINT_7(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_011_UINT_7(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_012", dataType: "UINT", bitLength: 8, scaleFactor: 0.25, description: "GLONASS L1 CNR")] //DF045
@@ -84,6 +95,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_012_UINT_8_S(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_012_UINT_8_S(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_012_UINT_8_S(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_013", dataType: "BIT", bitLength: 2, scaleFactor: 0, description: "GLONASS L2 Code Indicator")] //DF046
@@ -91,6 +103,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_013_BIT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_013_BIT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_013_BIT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_014", dataType: "INT", bitLength: 14, scaleFactor: 0.02, description: "GLONASS L2-L1 Pseudorange Difference")] //DF047
@@ -98,6 +111,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_014_INT_14_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_014_INT_14_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_014_INT_14_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GLONASS_015", dataType: "INT", bitLength: 20, scaleFactor: 0.0005, description: "GLONASS L2 PhaseRange - L1 Pseudorange")] //DF048
@@ -105,6 +119,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_015_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_015_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_015_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_016", dataType: "UINT", bitLength: 7, scaleFactor: 0, description: "GLONASS L2 Lock Time Indicator")] //DF049
@@ -112,6 +127,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_016_UINT_7(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_016_UINT_7(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_016_UINT_7(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_017", dataType: "UINT", bitLength: 8, scaleFactor: 0.25, description: "GLONASS L2 CNR")] //DF050
@@ -119,6 +135,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_017_UINT_8_S(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_017_UINT_8_S(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_017_UINT_8_S(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_018", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS almanac health")] //DF104
@@ -126,6 +143,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_018_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_018_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_018_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_019", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS almanac health availability indicator")] //DF105
@@ -133,6 +151,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_019_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_019_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_019_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_020", dataType: "BIT", bitLength: 2, scaleFactor: 0, description: "GLONASS P1")] //DF106
@@ -140,6 +159,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_020_BIT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_020_BIT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_020_BIT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_021", dataType: "BIT", bitLength: 12, scaleFactor: 0, description: "GLONASS tk")] //DF107
@@ -147,6 +167,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_021_BIT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_021_BIT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_021_BIT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GLONASS_022", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS MSB of Bn word")] //DF108
@@ -154,6 +175,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_022_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_022_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_022_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_023", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS P2")] //DF109
@@ -161,6 +183,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_023_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_023_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_023_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_024", dataType: "UINT", bitLength: 7, scaleFactor: 1, description: "GLONASS tb")] //DF110
@@ -168,6 +191,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_024_UINT_7(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_024_UINT_7(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_024_UINT_7(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_025", dataType: "INTS", bitLength: 24, scaleFactor: RtcmConstants.P2_20, description: "GLONASS xn(tb), first derivative")] //DF111
@@ -175,6 +199,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_025_SINT_24_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_025_SINT_24_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_025_SINT_24_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_026", dataType: "INTS", bitLength: 27, scaleFactor: RtcmConstants.P2_11, description: "GLONASS xn(tb)")] //DF112
@@ -182,6 +207,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_026_SINT_27_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_026_SINT_27_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_026_SINT_27_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_027", dataType: "INTS", bitLength: 5, scaleFactor: RtcmConstants.P2_30, description: "GLONASS xn(tb), second derivative")] //DF113
@@ -189,6 +215,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_027_SINT_5_S(sbyte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_027_SINT_5_S(sbyte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_027_SINT_5_S(long _rawValue) => new((sbyte)_rawValue);
     }
 
     [DataField(name: "GLONASS_028", dataType: "INTS", bitLength: 24, scaleFactor: RtcmConstants.P2_20, description: "GLONASS yn(tb), first derivative")] //DF114
@@ -196,6 +223,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_028_SINT_24_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_028_SINT_24_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_028_SINT_24_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_029", dataType: "INTS", bitLength: 27, scaleFactor: RtcmConstants.P2_11, description: "GLONASS yn(tb)")] //DF115
@@ -203,6 +231,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_029_SINT_27_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_029_SINT_27_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_029_SINT_27_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_030", dataType: "INTS", bitLength: 5, scaleFactor: RtcmConstants.P2_30, description: "GLONASS yn(tb), second derivative")] //DF116
@@ -210,6 +239,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_030_SINT_5_S(sbyte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_030_SINT_5_S(sbyte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_030_SINT_5_S(long _rawValue) => new((sbyte)_rawValue);
     }
 
     [DataField(name: "GLONASS_031", dataType: "INTS", bitLength: 24, scaleFactor: RtcmConstants.P2_20, description: "GLONASS zn(tb), first derivative")] //DF117
@@ -217,6 +247,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_031_SINT_24_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_031_SINT_24_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_031_SINT_24_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_032", dataType: "INTS", bitLength: 27, scaleFactor: RtcmConstants.P2_11, description: "GLONASS zn(tb)")] //DF118
@@ -224,6 +255,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_032_SINT_27_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_032_SINT_27_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_032_SINT_27_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_033", dataType: "INTS", bitLength: 5, scaleFactor: RtcmConstants.P2_30, description: "GLONASS zn(tb), second derivative")] //DF119
@@ -231,6 +263,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_033_SINT_5_S(sbyte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_033_SINT_5_S(sbyte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_033_SINT_5_S(long _rawValue) => new((sbyte)_rawValue);
     }
 
     [DataField(name: "GLONASS_034", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS P3")] //DF120
@@ -238,6 +271,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_034_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_034_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_034_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_035", dataType: "INTS", bitLength: 11, scaleFactor: 0, description: "GLONASS γn(tb) (Relative deviation)")] //DF121
@@ -245,6 +279,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_035_SINTS_11(short _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_035_SINTS_11(short _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_035_SINTS_11(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GLONASS_036", dataType: "BIT", bitLength: 2, scaleFactor: 0, description: "GLONASS-M P")] //DF122
@@ -252,6 +287,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_036_BIT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_036_BIT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_036_BIT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_037", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS-M ln (third string)")] //DF123
@@ -259,6 +295,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_037_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_037_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_037_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_038", dataType: "INTS", bitLength: 22, scaleFactor: 0, description: "GLONASS τn (tb)")] //DF124
@@ -266,6 +303,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_038_SINT_22(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_038_SINT_22(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_038_SINT_22(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_039", dataType: "INTS", bitLength: 5, scaleFactor: 0, description: "GLONASS-M Δτn")] //DF125
@@ -273,6 +311,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_039_SINT_5(sbyte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_039_SINT_5(sbyte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_039_SINT_5(long _rawValue) => new((sbyte)_rawValue);
     }
 
     [DataField(name: "GLONASS_040", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "GLONASS En")] //DF126
@@ -280,6 +319,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_040_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_040_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_040_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_041", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS-M P4")] //DF127
@@ -287,6 +327,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_041_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_041_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_041_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_042", dataType: "UINT", bitLength: 4, scaleFactor: 0, description: "GLONASS-M FT")] //DF128
@@ -294,6 +335,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_042_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_042_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_042_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_043", dataType: "UINT", bitLength: 11, scaleFactor: 1, description: "GLONASS-M NT")] //DF129
@@ -301,6 +343,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_043_UINT_11(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_043_UINT_11(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_043_UINT_11(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GLONASS_044", dataType: "BIT", bitLength: 2, scaleFactor: 0, description: "GLONASS-M M")] //DF130
@@ -308,6 +351,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_044_BIT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_044_BIT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_044_BIT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_045", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS The Availability of Additional Data")] //DF131
@@ -315,6 +359,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_045_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_045_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_045_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_046", dataType: "UINT", bitLength: 11, scaleFactor: 1, description: "GLONASS NA")] //DF132
@@ -322,6 +367,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_046_UINT_11(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_046_UINT_11(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_046_UINT_11(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GLONASS_047", dataType: "INTS", bitLength: 32, scaleFactor: 0, description: "GLONASS τc")] //DF133
@@ -329,6 +375,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_047_SINT_32(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_047_SINT_32(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_047_SINT_32(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_048", dataType: "UINT", bitLength: 5, scaleFactor: 0, description: "GLONASS-M N4")] //DF134
@@ -336,6 +383,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_048_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_048_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_048_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_049", dataType: "INTS", bitLength: 22, scaleFactor: 0, description: "GLONASS-M τGPS")] //DF135
@@ -343,6 +391,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_049_SINT(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_049_SINT(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_049_SINT(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_050", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS-M ln (fifth string)")] //DF136
@@ -350,6 +399,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_050_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_050_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_050_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_051", dataType: "UINT", bitLength: 17, scaleFactor: 1, description: "GLONASS Residuals Epoch Time (tk)")] //DF225
@@ -357,6 +407,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_051_UINT_17(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_051_UINT_17(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_051_UINT_17(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_052", dataType: "UINT", bitLength: 20, scaleFactor: 0.1, description: "GLONASS NW Epoch Time")] //DF233
@@ -364,6 +415,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_052_UINT_20_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_052_UINT_20_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_052_UINT_20_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_053", dataType: "UINT", bitLength: 4, scaleFactor: 0, description: "Number of GLONASS Data Entries")] //DF234
@@ -371,6 +423,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_053_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_053_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_053_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_054", dataType: "BIT", bitLength: 2, scaleFactor: 0, description: "GLONASS Ambiguity Status Flag")] //DF235
@@ -378,6 +431,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_054_BIT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_054_BIT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_054_BIT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_055", dataType: "UINT", bitLength: 3, scaleFactor: 0, description: "GLONASS Non Sync Count")] //DF236
@@ -385,6 +439,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_055_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_055_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_055_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_056", dataType: "INT", bitLength: 17, scaleFactor: 0.5, description: "GLONASS Ionospheric Carrier Phase Correction Difference")] //DF237
@@ -392,6 +447,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_056_INT_17_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_056_INT_17_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_056_INT_17_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_057", dataType: "INT", bitLength: 17, scaleFactor: 0.5, description: "GLONASS Geometric Carrier Phase Correction Difference")] //DF238
@@ -399,6 +455,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_057_INT_17_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_057_INT_17_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_057_INT_17_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GLONASS_058", dataType: "BIT", bitLength: 8, scaleFactor: 0, description: "GLONASS IOD")] //DF239
@@ -406,6 +463,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_058_BIT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_058_BIT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_058_BIT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_059", dataType: "UINT", bitLength: 17, scaleFactor: 1, description: "GLONASS FKP Epoch Time")] //DF241
@@ -413,6 +471,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_059_UINT_17(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_059_UINT_17(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_059_UINT_17(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_060", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "GLONASS Signal and Tracking Mode Identifier")] //DF381
@@ -420,6 +479,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_060_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_060_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_060_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_061", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "GLONASS Satellite ID")] //DF384
@@ -427,6 +487,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_061_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_061_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_061_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_062", dataType: "UINT", bitLength: 17, scaleFactor: 1, description: "GLONASS Epoch Time 1s")] //DF386
@@ -434,6 +495,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_062_UINT_17(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_062_UINT_17(uint _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_062_UINT_17(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GLONASS_063", dataType: "BIT", bitLength: 8, scaleFactor: 0, description: "GLONASS Issue Of Data (IOD)")] //DF392
@@ -441,6 +503,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_063_BIT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_063_BIT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_063_BIT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_064", dataType: "UINT", bitLength: 3, scaleFactor: 1, description: "GLONASS Day Of Week")] //DF416
@@ -448,6 +511,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_064_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_064_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_064_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_065", dataType: "UINT", bitLength: 4, scaleFactor: 1, description: "GLONASS Satellite Frequency Channel Number")] //DF419
@@ -455,6 +519,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_065_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_065_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_065_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_066", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS Code-Phase Bias Indicator")] //DF421
@@ -462,6 +527,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_066_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_066_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_066_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_067", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS FDMA Signals Mask L1 C/A")] //DF422_1
@@ -469,6 +535,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_067_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_067_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_067_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_068", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS FDMA Signals Mask L1 P")] //DF422_2
@@ -476,6 +543,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_068_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_068_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_068_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_069", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS FDMA Signals Mask L2 C/A")] //DF422_3
@@ -483,6 +551,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_069_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_069_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_069_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_070", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS FDMA Signals Mask L2 P")] //DF422_4
@@ -490,6 +559,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_070_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_070_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_070_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GLONASS_071", dataType: "INT", bitLength: 16, scaleFactor: 0.02, description: "GLONASS L1 C/A Code-Phase Bias")] //DF423
@@ -497,6 +567,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_071_INT_16_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_071_INT_16_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_071_INT_16_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GLONASS_072", dataType: "INT", bitLength: 16, scaleFactor: 0.02, description: "GLONASS L1 P Code-Phase Bias")] //DF424
@@ -504,6 +575,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_072_INT_16_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_072_INT_16_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_072_INT_16_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GLONASS_073", dataType: "INT", bitLength: 16, scaleFactor: 0.02, description: "GLONASS L2 C/A Code-Phase Bias")] //DF425
@@ -511,6 +583,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_073_INT_16_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_073_INT_16_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_073_INT_16_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GLONASS_075", dataType: "INT", bitLength: 16, scaleFactor: 0.02, description: "GLONASS L2 P Code-Phase Bias")] //DF426
@@ -518,5 +591,6 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GLONASS_075_INT_16_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GLONASS_075_INT_16_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GLONASS_075_INT_16_S(long _rawValue) => new((short)_rawValue);
     }
 }

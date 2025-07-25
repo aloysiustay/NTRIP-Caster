@@ -8,8 +8,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_001_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_001_BIT_1(byte _rawValue) => new(_rawValue);
-
-        public readonly static double ScaleFactor = 1;
+        public static implicit operator GNSS_001_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_002", dataType: "UINT", bitLength: 6, scaleFactor: 0, description: "ITRF Realization Year")] //DF021
@@ -17,6 +16,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_002_UINT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_002_UINT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_002_UINT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_003", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GPS Indicator")] //DF022
@@ -24,6 +24,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_003_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_003_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_003_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_004", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GLONASS Indicator")] //DF023
@@ -31,6 +32,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_004_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_004_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_004_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_005", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Galileo Indicator")] //DF024
@@ -38,6 +40,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_005_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_005_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_005_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_006", dataType: "BIT", bitLength: 2, scaleFactor: 0, description: "Quarter Cycle Indicator")] //DF364
@@ -45,6 +48,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_006_BIT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_006_BIT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_006_BIT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_007", dataType: "INT", bitLength: 22, scaleFactor: 0.1, description: "Delta Radial")] //DF365
@@ -52,6 +56,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_007_INT_22_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_007_INT_22_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_007_INT_22_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_008", dataType: "INT", bitLength: 20, scaleFactor: 0.4, description: "Delta Along-Track")] //DF366
@@ -59,6 +64,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_008_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_008_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_008_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_009", dataType: "INT", bitLength: 20, scaleFactor: 0.4, description: "Delta Cross-Track")] //DF367
@@ -66,6 +72,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_009_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_009_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_009_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_010", dataType: "INT", bitLength: 21, scaleFactor: 0.001, description: "Dot Delta Radial")] //DF368
@@ -73,6 +80,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_010_INT_21_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_010_INT_21_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_010_INT_21_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_011", dataType: "INT", bitLength: 19, scaleFactor: 0.004, description: "Dot Delta AlongTrack")] //DF369
@@ -80,6 +88,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_011_INT_19_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_011_INT_19_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_011_INT_19_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_012", dataType: "INT", bitLength: 19, scaleFactor: 0.004, description: "Dot Delta CrossTrack")] //DF370
@@ -87,6 +96,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_012_INT_19_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_012_INT_19_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_012_INT_19_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_013", dataType: "INT", bitLength: 27, scaleFactor: 0.00002, description: "RESERVED for Dot Dot Delta Radial")] //DF371
@@ -94,6 +104,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_013_INT_27_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_013_INT_27_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_013_INT_27_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_014_INT_25_S", dataType: "INT", bitLength: 25, scaleFactor: 0.00008, description: "RESERVED for Dot Dot Delta Along-Track")] //DF372
@@ -101,6 +112,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_014_INT_25_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_014_INT_25_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_014_INT_25_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_015", dataType: "INT", bitLength: 25, scaleFactor: 0.00008, description: "RESERVED for Dot Dot Delta Cross-Track")] //DF373
@@ -108,6 +120,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_015_INT_25_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_015_INT_25_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_015_INT_25_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_016", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Satellite Reference Point")] //DF374
@@ -115,6 +128,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_016_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_016_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_016_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_017", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Satellite Reference Datum")] //DF375
@@ -122,6 +136,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_017_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_017_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_017_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_018", dataType: "INT", bitLength: 22, scaleFactor: 0.1, description: "Delta Clock C0")] //DF376
@@ -129,6 +144,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_018_INT_22_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_018_INT_22_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_018_INT_22_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_019", dataType: "INT", bitLength: 21, scaleFactor: 0.001, description: "Delta Clock C1")] //DF377
@@ -136,6 +152,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_019_INT_21_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_019_INT_21_S(int _rawValue) => new GNSS_019_INT_21_S(_rawValue);
+        public static implicit operator GNSS_019_INT_21_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_020", dataType: "INT", bitLength: 27, scaleFactor: 0.00002, description: "Delta Clock C2")] //DF378
@@ -143,6 +160,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_020_INT_27_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_020_INT_27_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_020_INT_27_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_021", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "No. of Code Biases Processed")] //DF379
@@ -150,6 +168,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_021_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_021_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_021_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_022", dataType: "INT", bitLength: 14, scaleFactor: 0.01, description: "Code Bias")] //DF383
@@ -157,6 +176,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_022_INT_14_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_022_INT_14_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_022_INT_14_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GNSS_023", dataType: "UINT", bitLength: 6, scaleFactor: 1, description: "No. of Satellites")] //DF387
@@ -164,6 +184,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_023_UINT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_023_UINT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_023_UINT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_024", dataType: "BIT", bitLength: 1, scaleFactor: 1, description: "Multiple Message Indicator")] //DF388
@@ -171,6 +192,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_024_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_024_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_024_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_025", dataType: "BIT", bitLength: 6, scaleFactor: 0, description: "SSR URA")] //DF389
@@ -178,6 +200,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_025_BIT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_025_BIT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_025_BIT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_026", dataType: "INT", bitLength: 22, scaleFactor: 0.1, description: "High Rate Clock Correction")] //DF390
@@ -185,6 +208,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_026_INT_22_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_026_INT_22_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_026_INT_22_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_027", dataType: "BIT", bitLength: 4, scaleFactor: 1, description: "SSR Update Interval")] //DF391
@@ -192,6 +216,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_027_BIT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_027_BIT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_027_BIT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_028", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "MSM Multiple message bit")] //DF393
@@ -199,6 +224,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_028_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_028_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_028_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_029", dataType: "BIT", bitLength: 64, scaleFactor: 0, description: "GNSS Satellite mask")] //DF394
@@ -213,13 +239,14 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_030_BIT_32(uint _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_030_BIT_32(uint _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_030_BIT_32(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "GNSS_031", dataType: "BITX", bitLength: 0, scaleFactor: 0, description: "GNSS Cell mask")] //DF396
-    public class GNSS_031_BIT_X : DataFieldBase<BitArray>
+    public class GNSS_031_UINT_X : DataFieldBase<ulong>
     {
-        public GNSS_031_BIT_X(BitArray _rawValue) : base(_rawValue) { }
-        public static implicit operator GNSS_031_BIT_X(BitArray _rawValue) => new(_rawValue);
+        public GNSS_031_UINT_X(ulong _rawValue) : base(_rawValue) { }
+        public static implicit operator GNSS_031_UINT_X(ulong _rawValue) => new(_rawValue);
     }
 
     [DataField(name: "GNSS_032", dataType: "UINT", bitLength: 8, scaleFactor: 1, description: "The number of integer milliseconds in GNSS Satellite rough range")] //DF397
@@ -227,6 +254,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_032_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_032_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_032_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_033", dataType: "UINT", bitLength: 10, scaleFactor: RtcmConstants.P2_10, description: "GNSS Satellite rough range modulo 1 millisecond")] //DF398
@@ -234,6 +262,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_033_UINT_10_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_033_UINT_10_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_033_UINT_10_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GNSS_034", dataType: "INT", bitLength: 14, scaleFactor: 1, description: "GNSS Satellite rough Phase Range Rate")] //DF399
@@ -241,6 +270,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_034_INT_14(short _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_034_INT_14(short _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_034_INT_14(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GNSS_035", dataType: "INT", bitLength: 15, scaleFactor: RtcmConstants.P2_24, description: "GNSS signal fine Pseudorange")] //DF400
@@ -248,6 +278,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_035_INT_15_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_035_INT_15_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_035_INT_15_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GNSS_036", dataType: "INT", bitLength: 22, scaleFactor: RtcmConstants.P2_29, description: "GNSS signal fine PhaseRange data")] //DF401
@@ -255,6 +286,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_036_INT_22_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_036_INT_22_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_036_INT_22_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_037", dataType: "UINT", bitLength: 4, scaleFactor: 0, description: "GNSS PhaseRange Lock Time Indicator")] //DF402
@@ -262,6 +294,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_037_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_037_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_037_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_038", dataType: "UINT", bitLength: 6, scaleFactor: 1, description: "GNSS signal CNR")] //DF403
@@ -269,6 +302,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_038_UINT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_038_UINT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_038_UINT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_039", dataType: "INT", bitLength: 15, scaleFactor: 0.0001, description: "GNSS signal fine Phase Range Rate")] //DF404
@@ -276,6 +310,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_039_INT_15_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_039_INT_15_S(short _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_039_INT_15_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "GNSS_040", dataType: "INT", bitLength: 20, scaleFactor: RtcmConstants.P2_29, description: "GNSS signal fine Pseudorange with extended resolution")] //DF405
@@ -283,6 +318,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_040_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_040_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_040_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_041", dataType: "INT", bitLength: 24, scaleFactor: RtcmConstants.P2_31, description: "GNSS signal fine PhaseRange data with extended resolution")] //DF406
@@ -290,6 +326,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_041_INT_24_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_041_INT_24_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_041_INT_24_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_042", dataType: "UINT", bitLength: 10, scaleFactor: 0, description: "GNSS PhaseRange Lock Time Indicator with extended range and resolution.")] //DF407
@@ -297,6 +334,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_042_UINT_10(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_042_UINT_10(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_042_UINT_10(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GNSS_043", dataType: "UINT", bitLength: 10, scaleFactor: RtcmConstants.P2_4, description: "GNSS signal CNR with extended resolution")] //DF408
@@ -304,6 +342,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_043_UINT_10_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_043_UINT_10_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_043_UINT_10_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GNSS_044", dataType: "UINT", bitLength: 3, scaleFactor: 1, description: "IODS - Issue Of Data Station")] //DF409
@@ -311,6 +350,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_044_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_044_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_044_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_045", dataType: "UINT", bitLength: 2, scaleFactor: 0, description: "Clock Steering Indicator")] //DF411
@@ -318,6 +358,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_045_UINT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_045_UINT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_045_UINT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_046", dataType: "UINT", bitLength: 2, scaleFactor: 0, description: "External Clock Indicator")] //DF412
@@ -325,6 +366,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_046_UINT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_046_UINT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_046_UINT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_047", dataType: "UINT", bitLength: 4, scaleFactor: 1, description: "IOD SSR")] //DF413
@@ -332,6 +374,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_047_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_047_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_047_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_048", dataType: "UINT", bitLength: 16, scaleFactor: 1, description: "SSR Provider ID")] //DF414
@@ -339,6 +382,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_048_UINT_16(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_048_UINT_16(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_048_UINT_16(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "GNSS_049", dataType: "UINT", bitLength: 4, scaleFactor: 1, description: "SSR Solution ID")] //DF415
@@ -346,6 +390,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_049_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_049_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_049_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_050", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "GNSS Smoothing Type Indicator")] //DF417
@@ -353,6 +398,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_050_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_050_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_050_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_051", dataType: "BIT", bitLength: 3, scaleFactor: 0, description: "GNSS Smoothing Interval")] //DF418
@@ -360,6 +406,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_051_BIT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_051_BIT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_051_BIT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_052", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Half-cycle ambiguity indicator")] //DF420
@@ -367,6 +414,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_052_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_052_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_052_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_053", dataType: "UINT", bitLength: 2, scaleFactor: 1, description: "Number of Ionospheric Layers")] //DF472
@@ -374,6 +422,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_053_UINT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_053_UINT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_053_UINT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_054", dataType: "UINT", bitLength: 8, scaleFactor: 10, description: "Height of Ionospheric Layer")] //DF473
@@ -381,6 +430,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_054_UINT_8_S(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_054_UINT_8_S(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_054_UINT_8_S(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_055", dataType: "UINT", bitLength: 4, scaleFactor: 1, description: "Spherical Harmonics Degree")] //DF474
@@ -388,6 +438,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_055_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_055_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_055_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_056", dataType: "UINT", bitLength: 4, scaleFactor: 1, description: "Spherical Harmonics Order")] //DF475
@@ -395,6 +446,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_056_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_056_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_056_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "GNSS_057", dataType: "INT", bitLength: 16, scaleFactor: 0.005, description: "Spherical Harmonic Coefficient C")] //DF476
@@ -402,6 +454,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_057_INT_16_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_057_INT_16_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_057_INT_16_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_058", dataType: "INT", bitLength: 16, scaleFactor: 0.005, description: "Spherical Harmonic Coefficient S")] //DF477
@@ -409,6 +462,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_058_INT_16_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_058_INT_16_S(int _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_058_INT_16_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "GNSS_059", dataType: "UINT", bitLength: 9, scaleFactor: 0.05, description: "VTEC Quality Indicator")] //DF478
@@ -416,6 +470,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public GNSS_059_UINT_9_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator GNSS_059_UINT_9_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator GNSS_059_UINT_9_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
 }

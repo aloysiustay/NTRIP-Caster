@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace RtcmSharp
 {
-    internal class RtcmPacket
+    public class RtcmPacket
     {
         // 3-byte header
-        public byte[] Header { get; set; } = new byte[3];
+        public byte[] m_Header { get; set; } = new byte[3];
 
         // Payload bytes (dynamic size)
-        public List<byte> Payload { get; set; } = new List<byte>();
+        public List<byte> m_Payload { get; set; } = new List<byte>();
 
         // 3-byte CRC
-        public byte[] CRC { get; set; } = new byte[3];
+        public byte[] m_CRC { get; set; } = new byte[3];
 
         // Return the full packet as a byte array
         public byte[] GetFullPacket()
         {
-            var combined = new byte[Header.Length + Payload.Count + CRC.Length];
-            Buffer.BlockCopy(Header, 0, combined, 0, Header.Length);
-            Payload.CopyTo(combined, Header.Length);
-            Buffer.BlockCopy(CRC, 0, combined, Header.Length + Payload.Count, CRC.Length);
+            var combined = new byte[m_Header.Length + m_Payload.Count + m_CRC.Length];
+            Buffer.BlockCopy(m_Header, 0, combined, 0, m_Header.Length);
+            m_Payload.CopyTo(combined, m_Header.Length);
+            Buffer.BlockCopy(m_CRC, 0, combined, m_Header.Length + m_Payload.Count, m_CRC.Length);
             return combined;
         }
     }

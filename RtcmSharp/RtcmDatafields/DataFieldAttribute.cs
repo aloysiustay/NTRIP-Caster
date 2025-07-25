@@ -18,9 +18,9 @@
             Description = description;
         }
 
-        public string GetMetadataString()
+        public string GetMetadataString(bool _verbose = true)
         {
-            return $"Name: {Name}, DataType: {DataType}, BitLength: {BitLength}, ScaleFactor: {ScaleFactor}, Description: {Description}";
+            return _verbose ? $"Name: {Name}, DataType: {DataType}, BitLength: {BitLength}, ScaleFactor: {ScaleFactor}, Description: {Description}" : $"{Name}: ";
         }
     }
 }

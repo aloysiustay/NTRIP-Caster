@@ -7,6 +7,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public SBAS_001_UINT_20(uint _rawValue) : base(_rawValue) { }
         public static implicit operator SBAS_001_UINT_20(uint _rawValue) => new(_rawValue);
+        public static implicit operator SBAS_001_UINT_20(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "SBAS_002", dataType: "UINT", bitLength: 6, scaleFactor: 0, description: "SBAS Satellite ID")] //DF463
@@ -14,6 +15,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public SBAS_002_UINT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator SBAS_002_UINT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator SBAS_002_UINT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "SBAS_003", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "SBAS Signal and Tracking Mode Identifier")] //DF464
@@ -21,6 +23,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public SBAS_003_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator SBAS_003_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator SBAS_003_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "SBAS_004", dataType: "BIT", bitLength: 9, scaleFactor: 16, description: "SBAS t0 Modulo")] //DF468
@@ -28,6 +31,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public SBAS_004_BIT_9_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator SBAS_004_BIT_9_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator SBAS_004_BIT_9_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "SBAS_005", dataType: "BIT", bitLength: 24, scaleFactor: 0, description: "SBAS IOD CRC")] //DF469
@@ -35,5 +39,6 @@ namespace RtcmSharp.RtcmDatafields
     {
         public SBAS_005_BIT_24(uint _rawValue) : base(_rawValue) { }
         public static implicit operator SBAS_005_BIT_24(uint _rawValue) => new(_rawValue);
+        public static implicit operator SBAS_005_BIT_24(ulong _rawValue) => new((uint)_rawValue);
     }
 }

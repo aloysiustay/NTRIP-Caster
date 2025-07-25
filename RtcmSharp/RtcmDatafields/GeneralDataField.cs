@@ -7,6 +7,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_001_UINT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_001_UINT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_001_UINT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_002", dataType: "UINT", bitLength: 12, scaleFactor: 0, description: "Reference Station ID")] //DF003
@@ -14,6 +15,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_002_UINT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_002_UINT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_002_UINT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_003", dataType: "INT", bitLength: 38, scaleFactor: 0.0001, description: "Antenna Ref. Point, ECEF-X")] //DF025
@@ -42,6 +44,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_006_UINT_16_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_006_UINT_16_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_006_UINT_16_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_007", dataType: "UINT", bitLength: 8, scaleFactor: 0, description: "Descriptor Counter")] //DF029
@@ -49,6 +52,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_007_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_007_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_007_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_008", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Antenna Descriptor")] //DF030
@@ -63,6 +67,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_009_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_009_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_009_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_010", dataType: "UINT", bitLength: 8, scaleFactor: 0, description: "Serial Number Counter")] //DF032
@@ -70,6 +75,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_010_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_010_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_010_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_011", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Antenna Serial Number")] //DF033
@@ -84,6 +90,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_012_UINT_16(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_012_UINT_16(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_012_UINT_16(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_013", dataType: "UINT", bitLength: 17, scaleFactor: 1, description: "Seconds of Day (UTC)")] //DF052
@@ -91,6 +98,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_013_UINT_17(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_013_UINT_17(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_013_UINT_17(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_014", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "Number of Message ID Announcements to Follow (Nm)")] //DF053
@@ -98,6 +106,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_014_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_014_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_014_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_015", dataType: "UINT", bitLength: 8, scaleFactor: 1, description: "Leap Seconds, GPS-UTC")] //DF054
@@ -105,6 +114,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_015_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_015_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_015_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_016", dataType: "UINT", bitLength: 12, scaleFactor: 1, description: "Message ID")] //DF055
@@ -112,6 +122,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_016_UINT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_016_UINT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_016_UINT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_017", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Message Sync Flag")] //DF056
@@ -119,6 +130,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_017_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_017_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_017_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_018", dataType: "UINT", bitLength: 16, scaleFactor: 0.1, description: "Message Transmission Interval")] //DF057
@@ -126,6 +138,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_018_UINT_16_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_018_UINT_16_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_018_UINT_16_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_019", dataType: "UINT", bitLength: 5, scaleFactor: 1, description: "Number of Auxiliary Stations Transmitted")] //DF058
@@ -133,6 +146,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_019_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_019_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_019_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_020", dataType: "UINT", bitLength: 8, scaleFactor: 1, description: "Network ID")] //DF059
@@ -140,6 +154,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_020_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_020_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_020_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_021", dataType: "UINT", bitLength: 12, scaleFactor: 1, description: "Master Reference Station ID")] //DF060
@@ -147,6 +162,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_021_UINT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_021_UINT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_021_UINT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_022", dataType: "UINT", bitLength: 12, scaleFactor: 1, description: "Auxiliary Reference Station ID")] //DF061
@@ -154,6 +170,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_022_UINT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_022_UINT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_022_UINT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_023", dataType: "INT", bitLength: 20, scaleFactor: 25000000, description: "Aux-Master Delta Latitude")] //DF062
@@ -161,6 +178,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_023_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_023_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_023_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_024", dataType: "INT", bitLength: 21, scaleFactor: 25000000, description: "Aux-Master Delta Longitude")] //DF063
@@ -168,6 +186,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_024_INT_21_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_024_INT_21_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_024_INT_21_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_025", dataType: "INT", bitLength: 23, scaleFactor: 1, description: "Aux-Master Delta Height")] //DF064
@@ -175,6 +194,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_025_INT_23(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_025_INT_23(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_025_INT_23(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_026", dataType: "UINT", bitLength: 4, scaleFactor: 0, description: "Subnetwork ID")] //DF072
@@ -182,6 +202,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_026_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_026_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_026_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_027", dataType: "UINT", bitLength: 8, scaleFactor: 0, description: "RESERVED for Provider ID")] //DF073
@@ -189,6 +210,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_027_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_027_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_027_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_028", dataType: "UINT", bitLength: 7, scaleFactor: 1, description: "Number of Characters to Follow")] //DF138
@@ -196,6 +218,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_028_UINT_7(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_028_UINT_7(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_028_UINT_7(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_029", dataType: "UINT", bitLength: 8, scaleFactor: 1, description: "Number of UTF-8 Code Units")] //DF139
@@ -203,6 +226,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_029_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_029_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_029_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_030", dataType: "STR", bitLength: 8, scaleFactor: 0, description: "UTF-8 Character Code Units")] //DF140
@@ -217,6 +241,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_031_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_031_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_031_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_032", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Single Receiver Oscillator Indicator")] //DF142
@@ -224,6 +249,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_032_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_032_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_032_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_033", dataType: "UINT", bitLength: 5, scaleFactor: 0, description: "Source Name Counter")] //DF143
@@ -231,6 +257,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_033_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_033_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_033_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_034", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Source Name")] //DF144
@@ -245,6 +272,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_035_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_035_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_035_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_036", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Target Name")] //DF146
@@ -259,6 +287,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_037_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_037_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_037_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_038", dataType: "BIT", bitLength: 10, scaleFactor: 0, description: "Utilized Tranformation Message Indicator")] //DF148
@@ -266,6 +295,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_038_BIT_10(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_038_BIT_10(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_038_BIT_10(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_039", dataType: "UINT", bitLength: 5, scaleFactor: 0, description: "Plate Number")] //DF149
@@ -273,6 +303,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_039_UINT_5(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_039_UINT_5(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_039_UINT_5(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_040", dataType: "UINT", bitLength: 4, scaleFactor: 0, description: "Computation Indicator")] //DF150
@@ -280,6 +311,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_040_UINT_4(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_040_UINT_4(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_040_UINT_4(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_041", dataType: "UINT", bitLength: 2, scaleFactor: 0, description: "Height Indicator")] //DF151
@@ -287,6 +319,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_041_UINT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_041_UINT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_041_UINT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_042", dataType: "INT", bitLength: 19, scaleFactor: 2, description: "ΦV (Area of validity, lat)")] //DF152
@@ -294,6 +327,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_042_INT_19_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_042_INT_19_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_042_INT_19_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_043", dataType: "INT", bitLength: 20, scaleFactor: 2, description: "ΛV (Area of validity, lon)")] //DF153
@@ -301,6 +335,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_043_INT_20_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_043_INT_20_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_043_INT_20_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_044", dataType: "UINT", bitLength: 14, scaleFactor: 2, description: "∆ΦV (Area of validity, NS extension)")] //DF154
@@ -308,6 +343,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_044_UINT_14_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_044_UINT_14_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_044_UINT_14_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_045", dataType: "UINT", bitLength: 14, scaleFactor: 2, description: "∆ΛV (Area of validity, EW extension)")] //DF155
@@ -315,6 +351,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_045_UINT_14_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_045_UINT_14_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_045_UINT_14_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_046", dataType: "INT", bitLength: 23, scaleFactor: 0.001, description: "dX (Translation in X)")] //DF156
@@ -322,6 +359,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_046_INT_23_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_046_INT_23_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_046_INT_23_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_047", dataType: "INT", bitLength: 23, scaleFactor: 0.001, description: "dY (Translation in Y)")] //DF157
@@ -329,6 +367,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_047_INT_23_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_047_INT_23_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_047_INT_23_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_048", dataType: "INT", bitLength: 23, scaleFactor: 0.001, description: "dZ (Translation in Z)")] //DF158
@@ -336,6 +375,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_048_INT_23_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_048_INT_23_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_048_INT_23_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_049", dataType: "INT", bitLength: 32, scaleFactor: 0.00002, description: "R1 (Rotation around X)")] //DF159
@@ -343,6 +383,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_049_INT_32_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_049_INT_32_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_049_INT_32_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_050", dataType: "INT", bitLength: 32, scaleFactor: 0.00002, description: "R2 (Rotation around Y)")] //DF160
@@ -350,6 +391,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_050_INT_32_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_050_INT_32_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_050_INT_32_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_051", dataType: "INT", bitLength: 32, scaleFactor: 0.00002, description: "R3 (Rotation around Z)")] //DF161
@@ -357,6 +399,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_051_INT_32_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_051_INT_32_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_051_INT_32_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_052", dataType: "INT", bitLength: 25, scaleFactor: 0.00002, description: "dS (Scale correction)")] //DF162
@@ -364,6 +407,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_052_INT_25_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_052_INT_25_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_052_INT_25_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_053", dataType: "INT", bitLength: 35, scaleFactor: 0.001, description: "XP (X-coord for Molodenski-Badekas rotation)")] //DF163
@@ -392,6 +436,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_056_UINT_24_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_056_UINT_24_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_056_UINT_24_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_057", dataType: "UINT", bitLength: 25, scaleFactor: 0.001, description: "add bS")] //DF167
@@ -399,6 +444,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_057_UINT_25_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_057_UINT_25_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_057_UINT_25_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_058", dataType: "UINT", bitLength: 24, scaleFactor: 0.001, description: "add aT")] //DF168
@@ -406,6 +452,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_058_UINT_24_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_058_UINT_24_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_058_UINT_24_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_059", dataType: "UINT", bitLength: 25, scaleFactor: 0.001, description: "add bT")] //DF169
@@ -413,6 +460,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_059_UINT_25_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_059_UINT_25_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_059_UINT_25_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_060", dataType: "UINT", bitLength: 6, scaleFactor: 0, description: "Projection Type")] //DF170
@@ -420,6 +468,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_060_UINT_6(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_060_UINT_6(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_060_UINT_6(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_061", dataType: "INT", bitLength: 34, scaleFactor: 0.000000011, description: "LaNO [°]")] //DF171
@@ -441,6 +490,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_063_UINT_30_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_063_UINT_30_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_063_UINT_30_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_064", dataType: "UINT", bitLength: 36, scaleFactor: 0.001, description: "FE")] //DF174
@@ -504,6 +554,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_072_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_072_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_072_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_073", dataType: "INT", bitLength: 34, scaleFactor: 0.000000011, description: "LaPC")] //DF183
@@ -532,6 +583,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_076_INT_26_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_076_INT_26_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_076_INT_26_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_077", dataType: "UINT", bitLength: 30, scaleFactor: 0.00001, description: "Add SIL")] //DF187
@@ -539,6 +591,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_077_UINT_30_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_077_UINT_30_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_077_UINT_30_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_078", dataType: "UINT", bitLength: 36, scaleFactor: 0.001, description: "EPC")] //DF188
@@ -560,6 +613,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_080_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_080_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_080_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_081", dataType: "BIT", bitLength: 1, scaleFactor: 0, description: "Vertical Shift Indicator")] //DF191
@@ -567,6 +621,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_081_BIT_1(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_081_BIT_1(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_081_BIT_1(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_082", dataType: "INT", bitLength: 21, scaleFactor: 0.5, description: "Φ0")] //DF192
@@ -574,6 +629,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_082_INT_21_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_082_INT_21_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_082_INT_21_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_083", dataType: "INT", bitLength: 22, scaleFactor: 0.5, description: "Λ0")] //DF193
@@ -581,6 +637,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_083_INT_22_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_083_INT_22_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_083_INT_22_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_084", dataType: "UINT", bitLength: 12, scaleFactor: 0.5, description: "∆φ")] //DF194
@@ -588,6 +645,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_084_UINT_12_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_084_UINT_12_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_084_UINT_12_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_085", dataType: "UINT", bitLength: 12, scaleFactor: 0.5, description: "∆λ")] //DF195
@@ -595,6 +653,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_085_UINT_12_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_085_UINT_12_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_085_UINT_12_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_086", dataType: "INT", bitLength: 8, scaleFactor: 0.001, description: "Mean ∆φ")] //DF196
@@ -602,6 +661,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_086_INT_8_S(sbyte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_086_INT_8_S(sbyte _rawValue) => new(_rawValue);
+        public static implicit operator DF_086_INT_8_S(long _rawValue) => new((sbyte)_rawValue);
     }
 
     [DataField(name: "DF_087", dataType: "INT", bitLength: 8, scaleFactor: 0.001, description: "Mean ∆λ")] //DF197
@@ -609,6 +669,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_087_INT_8_S(sbyte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_087_INT_8_S(sbyte _rawValue) => new(_rawValue);
+        public static implicit operator DF_087_INT_8_S(long _rawValue) => new((sbyte)_rawValue);
     }
 
     [DataField(name: "DF_088", dataType: "INT", bitLength: 15, scaleFactor: 0.01, description: "Mean ∆H")] //DF198
@@ -616,6 +677,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_088_INT_15_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_088_INT_15_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_088_INT_15_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_089", dataType: "INT", bitLength: 9, scaleFactor: 0.00003, description: "δφi")] //DF199
@@ -623,6 +685,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_089_INT_9_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_089_INT_9_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_089_INT_9_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_090", dataType: "INT", bitLength: 9, scaleFactor: 0.00003, description: "δλi")] //DF200
@@ -630,6 +693,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_090_INT_9_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_090_INT_9_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_090_INT_9_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_091", dataType: "INT", bitLength: 9, scaleFactor: 0.001, description: "δhi")] //DF201
@@ -637,6 +701,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_091_INT_9_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_091_INT_9_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_091_INT_9_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_092", dataType: "INT", bitLength: 25, scaleFactor: 10, description: "N0")] //DF202
@@ -644,6 +709,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_092_INT_25_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_092_INT_25_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_092_INT_25_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_093", dataType: "UINT", bitLength: 26, scaleFactor: 10, description: "E0")] //DF203
@@ -651,6 +717,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_093_UINT_26_S(uint _rawValue) : base(_rawValue) { }
         public static implicit operator DF_093_UINT_26_S(uint _rawValue) => new(_rawValue);
+        public static implicit operator DF_093_UINT_26_S(ulong _rawValue) => new((uint)_rawValue);
     }
 
     [DataField(name: "DF_094", dataType: "UINT", bitLength: 12, scaleFactor: 10, description: "∆N")] //DF204
@@ -658,6 +725,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_094_UINT_12_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_094_UINT_12_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_094_UINT_12_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_095", dataType: "UINT", bitLength: 12, scaleFactor: 10, description: "∆E")] //DF205
@@ -665,6 +733,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_095_UINT_12_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_095_UINT_12_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_095_UINT_12_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_096", dataType: "INT", bitLength: 10, scaleFactor: 0.01, description: "Mean ∆N")] //DF206
@@ -672,6 +741,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_096_INT_10_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_096_INT_10_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_096_INT_10_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_097", dataType: "INT", bitLength: 10, scaleFactor: 0.01, description: "Mean ∆E")] //DF207
@@ -679,6 +749,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_097_INT_10_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_097_INT_10_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_097_INT_10_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_098", dataType: "INT", bitLength: 15, scaleFactor: 0.01, description: "Mean ∆h")] //DF208
@@ -686,6 +757,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_098_INT_15_S(int _rawValue) : base(_rawValue) { }
         public static implicit operator DF_098_INT_15_S(int _rawValue) => new(_rawValue);
+        public static implicit operator DF_098_INT_15_S(long _rawValue) => new((int)_rawValue);
     }
 
     [DataField(name: "DF_099", dataType: "INT", bitLength: 9, scaleFactor: 0.001, description: "δNi")] //DF209
@@ -693,6 +765,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_099_INT_9_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_099_INT_9_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_099_INT_9_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_100", dataType: "INT", bitLength: 9, scaleFactor: 0.001, description: "δEi")] //DF210
@@ -700,6 +773,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_100_INT_9_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_100_INT_9_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_100_INT_9_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_101", dataType: "INT", bitLength: 9, scaleFactor: 0.001, description: "δhi")] //DF211
@@ -707,6 +781,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_101_INT_9_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_101_INT_9_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_101_INT_9_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_102", dataType: "UINT", bitLength: 2, scaleFactor: 0, description: "Horizontal Interpolation Method Indicator")] //DF212
@@ -714,6 +789,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_102_UINT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_102_UINT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_102_UINT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_103", dataType: "UINT", bitLength: 2, scaleFactor: 0, description: "Vertical Interpolation Method Indicator")] //DF213
@@ -721,6 +797,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_103_UINT_2(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_103_UINT_2(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_103_UINT_2(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_104", dataType: "UINT", bitLength: 3, scaleFactor: 0, description: "Horizontal Helmert/Molodenski Quality Indicator")] //DF214
@@ -728,6 +805,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_104_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_104_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_104_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_105", dataType: "UINT", bitLength: 3, scaleFactor: 0, description: "Vertical Helmert/Molodenski Quality Indicator")] //DF215
@@ -735,6 +813,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_105_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_105_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_105_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_106", dataType: "UINT", bitLength: 3, scaleFactor: 0, description: "Horizontal Grid Quality Indicator")] //DF216
@@ -742,6 +821,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_106_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_106_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_106_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_107", dataType: "UINT", bitLength: 3, scaleFactor: 0, description: "Vertical Grid Quality Indicator")] //DF217
@@ -749,6 +829,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_107_UINT_3(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_107_UINT_3(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_107_UINT_3(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_108", dataType: "UINT", bitLength: 8, scaleFactor: 0.5, description: "soc")] //DF218
@@ -756,6 +837,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_108_UINT_8_S(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_108_UINT_8_S(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_108_UINT_8_S(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_109", dataType: "UINT", bitLength: 9, scaleFactor: 0.01, description: "sod")] //DF219
@@ -763,6 +845,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_109_UINT_9_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_109_UINT_9_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_109_UINT_9_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_110", dataType: "UINT", bitLength: 6, scaleFactor: 0.1, description: "soh")] //DF220
@@ -770,6 +853,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_110_UINT_6_S(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_110_UINT_6_S(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_110_UINT_6_S(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_111", dataType: "UINT", bitLength: 10, scaleFactor: 0.5, description: "sIc")] //DF221
@@ -777,6 +861,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_111_UINT_10_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_111_UINT_10_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_111_UINT_10_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_112", dataType: "UINT", bitLength: 10, scaleFactor: 0.01, description: "sId")] //DF222
@@ -784,6 +869,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_112_UINT_10_S(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_112_UINT_10_S(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_112_UINT_10_S(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_113", dataType: "UINT", bitLength: 7, scaleFactor: 0, description: "N-Refs")] //DF223
@@ -791,6 +877,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_113_UINT_7(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_113_UINT_7(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_113_UINT_7(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_114", dataType: "UINT", bitLength: 12, scaleFactor: 0, description: "Physical Reference Station ID")] //DF226
@@ -798,6 +885,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_114_UINT_12(ushort _rawValue) : base(_rawValue) { }
         public static implicit operator DF_114_UINT_12(ushort _rawValue) => new(_rawValue);
+        public static implicit operator DF_114_UINT_12(ulong _rawValue) => new((ushort)_rawValue);
     }
 
     [DataField(name: "DF_115", dataType: "UINT", bitLength: 8, scaleFactor: 0, description: "Receiver Type Descriptor Counter")] //DF227
@@ -805,13 +893,14 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_115_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_115_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_115_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_116", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Receiver Type Descriptor")] //DF228
-    public class DF_115_STR : DataFieldBase<string>
+    public class DF_116_STR : DataFieldBase<string>
     {
-        public DF_115_STR(string _rawValue) : base(_rawValue) { }
-        public static implicit operator DF_115_STR(string _rawValue) => new(_rawValue);
+        public DF_116_STR(string _rawValue) : base(_rawValue) { }
+        public static implicit operator DF_116_STR(string _rawValue) => new(_rawValue);
     }
 
     [DataField(name: "DF_117", dataType: "UINT", bitLength: 8, scaleFactor: 0, description: "Receiver Firmware Version Counter")] //DF229
@@ -819,6 +908,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_117_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_117_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_117_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_118", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Receiver Firmware Version")] //DF230
@@ -833,6 +923,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_119_UINT_8(byte _rawValue) : base(_rawValue) { }
         public static implicit operator DF_119_UINT_8(byte _rawValue) => new(_rawValue);
+        public static implicit operator DF_119_UINT_8(ulong _rawValue) => new((byte)_rawValue);
     }
 
     [DataField(name: "DF_120", dataType: "CHA", bitLength: 8, scaleFactor: 0, description: "Receiver Serial Number")] //DF232
@@ -847,6 +938,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_121_INT_12_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_121_INT_12_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_121_INT_12_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_122", dataType: "INT", bitLength: 12, scaleFactor: 0.01, description: "E0: Geometric gradient in east (ppm)")] //DF243
@@ -854,6 +946,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_122_INT_12_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_122_INT_12_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_122_INT_12_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_123", dataType: "INT", bitLength: 14, scaleFactor: 0.01, description: "NI: Ionospheric gradient in north  (ppm)")] //DF244
@@ -861,6 +954,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_123_INT_14_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_123_INT_14_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_123_INT_14_S(long _rawValue) => new((short)_rawValue);
     }
 
     [DataField(name: "DF_124", dataType: "INT", bitLength: 14, scaleFactor: 0.01, description: "EI: Ionospheric gradient in east  (ppm)")] //DF245
@@ -868,6 +962,7 @@ namespace RtcmSharp.RtcmDatafields
     {
         public DF_124_INT_14_S(short _rawValue) : base(_rawValue) { }
         public static implicit operator DF_124_INT_14_S(short _rawValue) => new(_rawValue);
+        public static implicit operator DF_124_INT_14_S(long _rawValue) => new((short)_rawValue);
     }
 
 }
