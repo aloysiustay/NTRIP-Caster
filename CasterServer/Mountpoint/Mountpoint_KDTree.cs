@@ -32,8 +32,12 @@ namespace CasterServer.Mountpoint
     };
     public class KD_Tree
     {
-        public KD_Node? m_Root { get; set; }
-        public KD_Node? BuildTree(List<MountpointData> _mountpoints, int _depth)
+        private KD_Node? m_Root { get; set; }
+        public void InitTree(List<MountpointData> _mountpoints)
+        {
+            m_Root = BuildTree(_mountpoints, 0);
+        }
+        private KD_Node? BuildTree(List<MountpointData> _mountpoints, int _depth)
         {
             if (_mountpoints.Count == 0)
                 return null;
@@ -63,9 +67,7 @@ namespace CasterServer.Mountpoint
 
             return node;
         }
-        public void InitTree(List<MountpointData> _mountpoints)
-        {
-            m_Root = BuildTree(_mountpoints, 0);
-        }
+
+
     }
 }

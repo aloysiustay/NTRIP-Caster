@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using CasterServer.Mountpoint;
@@ -74,6 +75,21 @@ namespace CasterServer.Network
                 + "Ntrip-Version: Ntrip/2.0\r\n"
                 + "\r\n";
             }
+        }
+
+        public static string GetSourceTable(string _host, int _port, string _authorization)
+        {
+            using var client = new TcpClient();
+            client.Connect(_host, _port);
+
+            using var stream = client.GetStream();
+            var writer = new StreamWriter(stream) { AutoFlush = true };
+            var reader = new StreamReader(stream);
+
+            writer.Write(NetworkUtils.FormatMountpointRequest(_authorization));
+
+            string response = reader.ReadToEnd();
+            return response;
         }
     }
 }
