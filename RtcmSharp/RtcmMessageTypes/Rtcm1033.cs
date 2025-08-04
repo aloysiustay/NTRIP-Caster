@@ -29,6 +29,7 @@ namespace RtcmSharp.RtcmMessageTypes
         public DF_120_STR m_ReceiverSerialNumber { get; }
         public Rtcm1033(Bitstream _bitStream) : base(_bitStream)
         {
+            m_MessageType = 1033;
             m_ReceiverTypeDescriptorLength = _bitStream.ReadBitsUnsigned(8);
             byte receiverTypeDescriptorLength = m_ReceiverTypeDescriptorLength.m_RawValue;
             var receiverType = new System.Text.StringBuilder(receiverTypeDescriptorLength);

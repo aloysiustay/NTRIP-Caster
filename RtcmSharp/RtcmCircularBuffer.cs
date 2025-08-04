@@ -1,16 +1,14 @@
-﻿using System;
-using System.Threading;
-using RtcmSharp;
+﻿using RtcmSharp;
 
-namespace CasterServer.Mountpoint
+namespace RtcmSharp
 {
-    public class CircularRTCMBuffer
+    public class RtcmCircularBuffer
     {
         private readonly int m_Capacity;
         private readonly RtcmPacket[] m_Buffer;
         private long m_Head; // Use long for atomic operations
 
-        public CircularRTCMBuffer(int _capacity)
+        public RtcmCircularBuffer(int _capacity)
         {
             m_Capacity = _capacity;
             m_Buffer = new RtcmPacket[_capacity];

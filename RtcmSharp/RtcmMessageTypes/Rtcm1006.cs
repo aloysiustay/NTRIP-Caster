@@ -26,6 +26,7 @@ namespace RtcmSharp.RtcmMessageTypes
         public Rtcm1006(Bitstream _bitStream) : base(_bitStream)
         {
             m_AntennaHeight = _bitStream.ReadBitsUnsigned(16);
+			m_MessageType = 1006;
         }
     }
 }

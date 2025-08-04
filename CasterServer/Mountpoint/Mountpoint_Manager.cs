@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CasterServer.Network;
 
 namespace CasterServer.Mountpoint
 {
@@ -13,8 +9,8 @@ namespace CasterServer.Mountpoint
 
         public MountpointManager()
         {
-            string sourceTable = Network.NetworkUtils.GetSourceTable("3.143.243.81", 2101, "aloytaytay-at-gmail.com:password");
-            List<MountpointData> mountpoints = Network.NetworkUtils.ParseMountpoints(sourceTable, "3.143.243.81", 2101);
+            string sourceTable = NetworkUtils.GetSourceTable("3.143.243.81", 2101, "aloytaytay-at-gmail.com:password");
+            List<MountpointData> mountpoints = NetworkUtils.ParseMountpoints(sourceTable, "3.143.243.81", 2101);
             m_MountpointTree.InitTree(mountpoints);
             foreach(MountpointData mountpoint in mountpoints)
             {

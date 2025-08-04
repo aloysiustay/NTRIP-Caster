@@ -3,15 +3,15 @@ using System.Net.Sockets;
 
 namespace CasterServer.Network
 {
-    public class Socket
+    public class RtcmSocket
     {
-        private string m_Host;
-        private int m_Port;
+        private string m_Host { get; set; }
+        private int m_Port { get; set; }
         public TcpClient m_Client { get; set; }
         public NetworkStream? m_Stream { get; set; }
         public StreamWriter? m_Writer { get; set; }
 
-        public Socket(string _host, int _port)
+        public RtcmSocket(string _host, int _port)
         {
             m_Host = _host;
             m_Port = _port;

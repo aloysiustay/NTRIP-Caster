@@ -9,16 +9,21 @@ namespace CasterServer.Application
 {
     public class App
     {
-        public MountpointManager m_MountpointManager { get; set; } = new();
+        public MountpointManager m_MountpointManager = new MountpointManager();
 
         public void Init()
         {
-            
+            var session = m_MountpointManager.GetMountpointSession("AGD_CORP");
+            session?.DecodeRTCM();
         }
 
         public void Run()
         {
-
+            while (true)
+            {
+                var session = m_MountpointManager.GetMountpointSession("AGD_CORP");
+                session?.PrintMessages();
+            }
         }
 
         public void Shutdown()
