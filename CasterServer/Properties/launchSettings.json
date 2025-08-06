@@ -1,12 +1,13 @@
 {
   "profiles": {
     "CasterServer": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:53209;http://localhost:53210"
+        "commandName": "Project",
+        "launchBrowser": true,
+        "launchUrl": "",
+        "applicationUrl": "http://localhost:18080",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     }
   }
 }

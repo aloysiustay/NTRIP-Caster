@@ -4,8 +4,8 @@ namespace CasterServer.Mountpoint
 {
     public class MountpointManager
     {
-        public KD_Tree m_MountpointTree { get; set; } = new();
-        public Dictionary<string, MountpointSession> m_Mountpoints { get; set; } = new();
+        private KD_Tree m_MountpointTree { get; set; } = new();
+        private Dictionary<string, MountpointSession> m_Mountpoints { get; set; } = new();
 
         public MountpointManager()
         {
@@ -21,6 +21,33 @@ namespace CasterServer.Mountpoint
         public MountpointSession? GetMountpointSession(string _mountpoint)
         {
             return m_Mountpoints.TryGetValue(_mountpoint, out MountpointSession session) ? session : null;
+        }
+
+        public Dictionary<string, MountpointSession> GetMountpoints()
+        {
+            return m_Mountpoints;
+        }
+
+        public List<KD_Candidate> SearchNearestMountpoints(int _numMountpoints, Coordinates _target)
+        {
+            List<KD_Candidate> result = new List<KD_Candidate>();
+            var closest = m_MountpointTree.SearchClosestMountpoint(_numMountpoints, _target);
+            while (closest.Count != 0)
+            {
+                result.Add(closest.Dequeue());
+            }
+            return result;
+        }
+        public List<KD_Candidate> SearchNearestMountpointsWithinRadius(double _radius, Coordinates _target)
+        {
+            return m_MountpointTree.SearchClosestMountpointWithinRadius(_radius * 1000, _target);
+        }
+        public void Dispose()
+        {
+            foreach(var sess in m_Mountpoints)
+            {
+                sess.Value.Dispose();
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ namespace RtcmSharp
         private Task? m_StreamTask = null;
         private Task? m_DecodeTask = null;
 
+        public bool IsStreamActive => m_StreamToken != null ? true : false;
+        public bool IsDecodeActive => m_DecodeToken != null ? true : false;
         public long m_ReadIndex = 0;
         public RtcmCircularBuffer m_Buffer { get; set; }
         public RtcmParser m_Parser { get; set; }

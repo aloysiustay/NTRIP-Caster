@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RtcmSharp;
 
 namespace RtcmSharp
 {
@@ -16,6 +17,15 @@ namespace RtcmSharp
 
         // 3-byte CRC
         public byte[] m_CRC { get; set; } = new byte[3];
+
+        public DateTimeOffset m_TimeStamp; 
+        public ushort GetMessageType()
+        {
+            byte first = m_Payload[0];
+            byte second = m_Payload[1];
+            ushort combined = (ushort)((first << 8) | second);
+            return (ushort)(combined >> 4);
+        }
 
         // Return the full packet as a byte array
         public byte[] GetFullPacket()

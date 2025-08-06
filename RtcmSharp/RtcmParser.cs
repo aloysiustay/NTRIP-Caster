@@ -1,4 +1,6 @@
-﻿namespace RtcmSharp
+﻿using CasterServer.Clock;
+
+namespace RtcmSharp
 {
     internal enum ParseState
     {
@@ -61,6 +63,7 @@
                         if (ValidateCRC())
                         {
                             m_PayloadReceived = true;
+                            m_Packet.m_TimeStamp = RtcmClock.GetUtcTime();
                         }
                         else
                         {

@@ -54,5 +54,4 @@ namespace CasterServer.Mountpoint
                     $"Bitrate: {m_Bitrate}\n";
         }
     }
-
 }

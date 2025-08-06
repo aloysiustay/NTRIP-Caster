@@ -37,5 +37,10 @@ namespace CasterServer.Mountpoint
                 //Console.WriteLine(msg.Value.Describe());
             }
         }
+
+        public async void Dispose()
+        {
+            await m_Streamer.Dispose();
+        }
     }
 }
