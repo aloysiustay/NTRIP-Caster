@@ -3,7 +3,7 @@ using CasterServer.Application;
 using CasterServer.Mountpoint;
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllers();
@@ -20,7 +20,13 @@ class Program
         App appInstance = new App();
         appInstance.Init();
         builder.Services.AddSingleton(appInstance);
-        appInstance.Run();
-        appInstance.Shutdown();
+
+        Console.CancelKeyPress += async (sender, e) =>
+        {
+            e.Cancel = true;
+            await appInstance.ShutdownAsync();
+        };
+
+        await appInstance.RunAsync();
     }
 }

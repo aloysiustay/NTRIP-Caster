@@ -33,8 +33,8 @@ namespace CasterServer.Mountpoint
             Console.WriteLine(m_Streamer.m_Messages.Count.ToString());
             foreach (var msg in m_Streamer.m_Messages)
             {
-                Console.WriteLine(msg.Key.ToString());
-                //Console.WriteLine(msg.Value.Describe());
+                //Console.WriteLine(msg.Key.ToString());
+                Console.WriteLine(msg.Value.Describe(true));
             }
         }
 

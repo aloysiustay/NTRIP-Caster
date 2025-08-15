@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using CasterServer.Mountpoint;
-using CasterServer.CasterMath;
+﻿using RtkMathLib;
 
 namespace CasterServer.Mountpoint
 {
@@ -13,18 +6,18 @@ namespace CasterServer.Mountpoint
     {
         public double m_Distance { get; set; }
         public string m_Mountpoint { get; set; }
-        public Coordinates m_Coordinate { get; set; }
+        public LatLonAlt m_Coordinate { get; set; }
     };
 
     public class KD_Node
     {
         public int m_Depth { get; set; }
         public string m_MountpointName { get; set; }
-        public Coordinates m_Coordinate { get; set; }
+        public LatLonAlt m_Coordinate { get; set; }
         public KD_Node? m_Left { get; set; }
         public KD_Node? m_Right { get; set; }
 
-        public KD_Node(int _depth, string _mountpointName, Coordinates _coordinate)
+        public KD_Node(int _depth, string _mountpointName, LatLonAlt _coordinate)
         {
             m_Depth = _depth;
             m_MountpointName = _mountpointName;
@@ -64,18 +57,18 @@ namespace CasterServer.Mountpoint
 
             return node;
         }
-        public PriorityQueue<KD_Candidate, double> SearchClosestMountpoint(int _numMountpoints, Coordinates _target)
+        public PriorityQueue<KD_Candidate, double> SearchClosestMountpoint(int _numMountpoints, LatLonAlt _target)
         {
             PriorityQueue<KD_Candidate, double> queue = new();
             KNearestNeighbour(m_Root, _target, _numMountpoints, 0, queue);
             return queue;
         }
-        private void KNearestNeighbour(KD_Node? node, Coordinates target, int numNeighbours, int depth, PriorityQueue<KD_Candidate, double> nearestNeighbours)
+        private void KNearestNeighbour(KD_Node? node, LatLonAlt target, int numNeighbours, int depth, PriorityQueue<KD_Candidate, double> nearestNeighbours)
         {
             if (node == null)
                 return;
 
-            double distance = MathUtils.HaversineDistance(target, node.m_Coordinate);
+            double distance = Utils.HaversineDistance(target, node.m_Coordinate);
 
             if (nearestNeighbours.Count < numNeighbours)
             {
@@ -95,11 +88,11 @@ namespace CasterServer.Mountpoint
 
             KNearestNeighbour(nearChild, target, numNeighbours, depth + 1, nearestNeighbours);
 
-            Coordinates projectedPoint = (axis == 0)
-                ? new Coordinates { m_Latitude = node.m_Coordinate.m_Latitude, m_Longitude = target.m_Longitude }
-                : new Coordinates { m_Latitude = target.m_Latitude, m_Longitude = node.m_Coordinate.m_Longitude };
+            LatLonAlt projectedPoint = (axis == 0)
+                ? new LatLonAlt { m_Latitude = node.m_Coordinate.m_Latitude, m_Longitude = target.m_Longitude }
+                : new LatLonAlt { m_Latitude = target.m_Latitude, m_Longitude = node.m_Coordinate.m_Longitude };
 
-            double distanceToPlane = MathUtils.HaversineDistance(target, projectedPoint);
+            double distanceToPlane = Utils.HaversineDistance(target, projectedPoint);
 
             if (nearestNeighbours.Count < numNeighbours || distanceToPlane < nearestNeighbours.Peek().m_Distance)
             {
@@ -107,18 +100,18 @@ namespace CasterServer.Mountpoint
             }
         }
 
-        public List<KD_Candidate> SearchClosestMountpointWithinRadius(double radiusMeters, Coordinates _target)
+        public List<KD_Candidate> SearchClosestMountpointWithinRadius(double radiusMeters, LatLonAlt _target)
         {
             List<KD_Candidate> list = new();
             NearestNeighbourWithinRadius(m_Root, _target, radiusMeters, 0, list);
             return list;
         }
-        private void NearestNeighbourWithinRadius(KD_Node? node, Coordinates target, double radiusMeters, int depth, List<KD_Candidate> nearestNeighbours)
+        private void NearestNeighbourWithinRadius(KD_Node? node, LatLonAlt target, double radiusMeters, int depth, List<KD_Candidate> nearestNeighbours)
         {
             if (node == null)
                 return;
 
-            double distanceToMountpoint = MathUtils.HaversineDistance(target, node.m_Coordinate);
+            double distanceToMountpoint = Utils.HaversineDistance(target, node.m_Coordinate);
 
             if (distanceToMountpoint <= radiusMeters)
             {
@@ -133,11 +126,11 @@ namespace CasterServer.Mountpoint
 
             NearestNeighbourWithinRadius(nearChild, target, radiusMeters, depth + 1, nearestNeighbours);
 
-            Coordinates projectedPoint = (axis == 0)
-                ? new Coordinates { m_Latitude = node.m_Coordinate.m_Latitude, m_Longitude = target.m_Longitude }
-                : new Coordinates { m_Latitude = target.m_Latitude, m_Longitude = node.m_Coordinate.m_Longitude };
+            LatLonAlt projectedPoint = (axis == 0)
+                ? new LatLonAlt { m_Latitude = node.m_Coordinate.m_Latitude, m_Longitude = target.m_Longitude }
+                : new LatLonAlt { m_Latitude = target.m_Latitude, m_Longitude = node.m_Coordinate.m_Longitude };
 
-            double distanceToPlane = MathUtils.HaversineDistance(target, projectedPoint);
+            double distanceToPlane = Utils.HaversineDistance(target, projectedPoint);
 
             if (distanceToPlane < radiusMeters)
             {

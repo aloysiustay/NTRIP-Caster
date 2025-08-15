@@ -1,5 +1,5 @@
-﻿using CasterServer.Network;
-using RtcmSharp.RtcmMessageTypes;
+﻿using RtcmSharp.RtcmMessageTypes;
+using RtcmSharp.RtcmNetwork;
 using System.Collections.Concurrent;
 
 namespace RtcmSharp
@@ -17,7 +17,8 @@ namespace RtcmSharp
         public long m_ReadIndex = 0;
         public RtcmCircularBuffer m_Buffer { get; set; }
         public RtcmParser m_Parser { get; set; }
-        public RtcmSocket m_Socket { get; set; }
+
+        public RtcmTcpSocket m_TcpSocket;
         public ConcurrentDictionary<ushort, BaseMessage> m_Messages = new();
 
         public RtcmStreamer(string _host, int _port, string _mountpoint)
@@ -25,7 +26,7 @@ namespace RtcmSharp
             m_Mountpoint = _mountpoint;
             m_Buffer = new RtcmCircularBuffer(512);
             m_Parser = new RtcmParser();
-            m_Socket = new RtcmSocket(_host, _port);
+            m_TcpSocket = new RtcmTcpSocket(_host, _port, 4096);
         }
         public void StartStream(string _request)
         {
@@ -73,22 +74,22 @@ namespace RtcmSharp
 
         public async Task StreamAsync(string _request, CancellationToken _token)
         {
-            await m_Socket.Connect();
-            await m_Socket.SendAsync(_request);
+            await m_TcpSocket.ConnectAsync();
+            await m_TcpSocket.SendAsync(_request);
 
             while (!_token.IsCancellationRequested)
             {
-                var result = await m_Socket.ReceiveAsync();
-                if (!result.success)
+                byte[]? result = await m_TcpSocket.ReceiveAsync();
+                if (result == null)
                     continue;
-                foreach (byte b in result.data)
+                foreach (byte b in result)
                 {
                     if (m_Parser.ParseByte(b))
                         m_Buffer.Write(m_Parser.GetRtcmPacket());
                 }
             }
 
-            m_Socket.Disconnect();
+            m_TcpSocket.Dispose();
         }
 
         public async Task StopStreamAsync()

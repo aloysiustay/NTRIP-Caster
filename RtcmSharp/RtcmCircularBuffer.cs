@@ -14,6 +14,7 @@ namespace RtcmSharp
         private readonly RtcmPacket[] m_Buffer;
         private readonly ReaderWriterLockSlim m_StatusLock = new();
         private readonly Dictionary<ushort, RtcmBufferStatus> m_Status = new();
+        private readonly object m_Lock = new object();
         private long m_Head; // Use long for atomic operations
 
         public RtcmCircularBuffer(int _capacity)
@@ -68,9 +69,12 @@ namespace RtcmSharp
 
         public void Write(RtcmPacket _packet)
         {
-            long index = Interlocked.Increment(ref m_Head) - 1;
-            int bufferIndex = (int)(index % m_Capacity);
+            if(_packet == null)
+                return;
+
+            int bufferIndex = (int)(m_Head % m_Capacity);
             m_Buffer[bufferIndex] = _packet;
+            Interlocked.Increment(ref m_Head);
             UpdateStatus(_packet);
         }
 
@@ -100,6 +104,10 @@ namespace RtcmSharp
 
             int bufferIndex = (int)(_readIndex % m_Capacity);
             _outPacket = m_Buffer[bufferIndex];
+            //if (_outPacket == null)
+            //{
+            //    return false; 
+            //}
             _readIndex++;
             return true;
         }

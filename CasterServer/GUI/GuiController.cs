@@ -4,6 +4,7 @@ using CasterServer.Application;
 using CasterServer.Mountpoint;
 using System.Runtime.CompilerServices;
 using RtcmSharp;
+using RtkMathLib;
 
 namespace CasterServer.GUI
 {
@@ -50,14 +51,14 @@ namespace CasterServer.GUI
         [HttpGet("nearestMountpoints")]
         public IActionResult GetNearestMountpoints([FromQuery] double Latitude, [FromQuery] double Longitude, [FromQuery] int NumberOfMountpoints)
         {
-            var mountpoints = m_MountpointManager.SearchNearestMountpoints(NumberOfMountpoints, new Coordinates { m_Latitude = Latitude, m_Longitude = Longitude });
+            var mountpoints = m_MountpointManager.SearchNearestMountpoints(NumberOfMountpoints, new LatLonAlt { m_Latitude = Latitude, m_Longitude = Longitude });
             return Ok(new { mountpoints = mountpoints });
         }
 
         [HttpGet("nearestMountpointsWithinRadius")]
         public IActionResult GetNearestMountpointsWiithinRadius([FromQuery] double Latitude, [FromQuery] double Longitude, [FromQuery] double RadiusInKilometer)
         {
-            var mountpoints = m_MountpointManager.SearchNearestMountpointsWithinRadius(RadiusInKilometer, new Coordinates { m_Latitude = Latitude, m_Longitude = Longitude });
+            var mountpoints = m_MountpointManager.SearchNearestMountpointsWithinRadius(RadiusInKilometer, new LatLonAlt { m_Latitude = Latitude, m_Longitude = Longitude });
             return Ok(new { mountpoints = mountpoints });
         }
 
