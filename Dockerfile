@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy solution file first
-COPY MyCasterSolution.sln ./
+COPY Caster.sln ./
 
 # Copy only the projects we need (for dependency restore)
 COPY CasterServer/CasterServer.csproj CasterServer/
