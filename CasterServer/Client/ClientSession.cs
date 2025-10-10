@@ -4,6 +4,9 @@ using RtcmSharp.NMEA;
 using RtcmSharp.RtcmNetwork;
 using CasterServer.Clock;
 using System.Globalization;
+using System.Threading.Tasks;
+using RtkMathLib;
+using System.Reflection;
 
 namespace CasterServer.Client
 {
@@ -12,6 +15,7 @@ namespace CasterServer.Client
         private readonly Action<ClientSession> m_OnDisconnect;
         private readonly MountpointManager m_MountpointManager;
         private readonly RtcmTcpSocket m_Socket;
+        private bool m_Disposed;
 
         private MountpointSession? m_Mountpoint = null;
         private long m_ReadIndex;
@@ -61,16 +65,32 @@ namespace CasterServer.Client
             while (!string.IsNullOrEmpty(line = await m_Socket.ReceiveLineAsync())) { }
 
             string mountpoint = parts[1].TrimStart('/');
-            ProcessMountpoint(mountpoint);
+            await ProcessMountpoint(mountpoint);
 
             return true;
         }
-        private bool ProcessMountpoint(string _mountpoint)
+        private async Task<bool> ProcessMountpoint(string _mountpoint)
         {
             if(string.IsNullOrEmpty(_mountpoint))
                 return false;
 
-            m_Mountpoint = m_MountpointManager.GetMountpointSession(_mountpoint);
+            if (_mountpoint == "AUTO")
+            {
+                GPGGA? gpgga = await GetGPGGA();
+                if (gpgga != null)
+                {
+                    var closest = m_MountpointManager.SearchNearestMountpoints(1, gpgga.m_Coordinates);
+                    m_Mountpoint = m_MountpointManager.GetMountpointSession(closest.First().m_Mountpoint);
+                    if(m_Mountpoint != null)
+                        m_ReadIndex = m_Mountpoint.m_Streamer.m_Buffer.GetCurrentHead();
+                    m_UsingClosest = true;
+                }
+            }
+            else
+            {
+                m_Mountpoint = m_MountpointManager.GetMountpointSession(_mountpoint);
+            }
+
             if (m_Mountpoint != null)
             {
                 m_ReadIndex = m_Mountpoint.m_Streamer.m_Buffer.GetCurrentHead();
@@ -95,13 +115,19 @@ namespace CasterServer.Client
                 return;
             }
             
-            Console.WriteLine($"Session started for {m_Mountpoint.m_Info.m_Mountpoint}");
             Task streamTask = StreamMountpointAsync();
-            Task readTask = ReadAsync();
-            await Task.WhenAny(readTask, streamTask);
-
-            m_CancellationToken.Cancel();
-            Dispose();
+            if(m_UsingClosest)
+            {
+                Task readTask = ReadAsync();
+                await Task.WhenAny(readTask, streamTask);
+                m_CancellationToken.Cancel();
+                await streamTask;
+                await readTask;
+            }
+            else
+            {
+                await streamTask;
+            }
         }
 
         private async Task ProcessNtripV2()
@@ -123,29 +149,47 @@ namespace CasterServer.Client
                 return;
             }
 
-            Console.WriteLine($"Session started for {m_Mountpoint.m_Info.m_Mountpoint}");
         }
         private async Task StreamMountpointAsync()
         {
-            while (m_Socket.IsConnected && !m_CancellationToken.Token.IsCancellationRequested)
+            try
             {
-                if (m_Mountpoint != null)
+                while (!m_CancellationToken.Token.IsCancellationRequested)
                 {
-                    RtcmCircularBuffer buffer = m_Mountpoint.m_Streamer.m_Buffer;
-                    RtcmPacket packet;
-                    if (buffer.Read(ref m_ReadIndex, out packet))
+                    if (m_Mountpoint != null)
                     {
-                        await m_Socket.SendAsync(packet.GetFullPacket());
+                        RtcmCircularBuffer buffer = m_Mountpoint.m_Streamer.m_Buffer;
+                        RtcmPacket packet;
+                        if (buffer.Read(ref m_ReadIndex, out packet))
+                        {
+                            if (await m_Socket.SendAsync(packet.GetFullPacket()))
+                            {
+                                Console.WriteLine($"Sending Packet to {m_Socket.m_Host} on Port {m_Socket.m_Port.ToString()}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Unable to send packet to client");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            await Task.Delay(1, m_CancellationToken.Token);
+                        }
                     }
                     else
                     {
-                        await Task.Delay(1, m_CancellationToken.Token);
+                        await Task.Delay(10, m_CancellationToken.Token);
                     }
                 }
-                else
-                {
-                    await Task.Delay(10, m_CancellationToken.Token);
-                }
+            }
+            catch (TaskCanceledException)
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Loop exited due to exception: {ex}");
             }
         }
 
@@ -153,7 +197,9 @@ namespace CasterServer.Client
         {
             while (!m_CancellationToken.Token.IsCancellationRequested)
             {
-                m_GPGGA = await GetGPGGA();
+                await Task.Delay(5000);
+                //m_GPGGA = await GetGPGGA();
+                await ProcessMountpoint("AUTO");
             }
         }
 
@@ -183,7 +229,10 @@ namespace CasterServer.Client
         }
 
         public void Dispose()
-        {;
+        {
+            if (m_Disposed)
+                return;
+            m_Disposed = true;
             m_CancellationToken.Dispose();
             m_Socket.Dispose();
             m_OnDisconnect(this);

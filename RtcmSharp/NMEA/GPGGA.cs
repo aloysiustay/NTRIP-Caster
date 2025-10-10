@@ -1,20 +1,39 @@
 ﻿using System.Globalization;
+using CasterServer.Clock;
 using RtkMathLib;
 
 namespace RtcmSharp.NMEA
 {
     public class GPGGA
     {
-        public string m_UtcTime { get; set; } = string.Empty;
+        public DateTimeOffset m_UtcTime { get; set; }
         public LatLonAlt m_Coordinates { get; set; }
         public double m_GeoidHeight { get; set; }
         public int m_FixQuality { get; set; }
         public int m_NumSatellites { get; set; }
         public double m_HorizontalDilutionOfPrecision { get; set; }
         public int m_AgeOfCorrectionData { get; set; }
-        public int m_DiffStationId { get; set; }
+        public string m_DiffStationId { get; set; } = string.Empty;
         public string m_RawString { get; set; } = string.Empty;
+        public string FormatMessage()
+        {
+            string message = "$GPGGA,";
 
+            m_UtcTime = RtcmClock.GetUtcTime();
+            message += m_UtcTime.ToString("HHmmss.ff") + ',';
+
+            message += ConvertDecimalToDms(m_Coordinates);
+
+            message += m_FixQuality.ToString() + ',' + m_NumSatellites.ToString() + ',' + m_HorizontalDilutionOfPrecision.ToString() + ',';
+
+            message += m_Coordinates.m_Altitude.ToString("0.00") + ",M," + m_GeoidHeight.ToString("0.00") + ",M,";
+
+            message += m_AgeOfCorrectionData.ToString() + ',' + m_DiffStationId + '*';
+
+            message += ComputeChecksum(message) + '\n';
+
+            return message;
+        }
         public static bool TryParse(string _string, out GPGGA _data)
         {
             _data = new GPGGA();
@@ -29,7 +48,12 @@ namespace RtcmSharp.NMEA
 
             _data.m_RawString = _string;
 
-            _data.m_UtcTime = parts[1];
+            string hhmmss = parts[1].Split('.')[0]; // "202530"
+            if (TimeSpan.TryParseExact(hhmmss, "hhmmss", CultureInfo.InvariantCulture, out TimeSpan _time))
+            {
+                _data.m_UtcTime = DateTime.Today.Add(_time);
+            }
+
             double latitude = ConvertDmsToDecimal(parts[2], parts[3]);
             double longitude = ConvertDmsToDecimal(parts[4], parts[5]);
 
@@ -53,13 +77,12 @@ namespace RtcmSharp.NMEA
 
             var last = parts[14].Split('*');
 
-            if (Int32.TryParse(last[0], out int _id))
-                _data.m_DiffStationId = _id;
+            _data.m_DiffStationId = last[0];
 
             return true;
         }
 
-        private static bool ValidateChecksum(string _sentence)
+        public static bool ValidateChecksum(string _sentence)
         {
             if (!_sentence.StartsWith("$") || !_sentence.Contains("*"))
                 return false;
@@ -81,6 +104,24 @@ namespace RtcmSharp.NMEA
 
             return false;
         }
+        static string ComputeChecksum(string _sentence)
+        {
+            if (_sentence.StartsWith("$"))
+                _sentence = _sentence.Substring(1);
+
+            int asteriskIndex = _sentence.IndexOf('*');
+            if (asteriskIndex >= 0)
+                _sentence = _sentence.Substring(0, asteriskIndex);
+
+            int checksum = 0;
+            foreach (char c in _sentence)
+            {
+                checksum ^= Convert.ToByte(c);
+            }
+
+            return checksum.ToString("X2", CultureInfo.InvariantCulture);
+        }
+
         private static double ConvertDmsToDecimal(string _value, string _hemisphere)
         {
             if (double.TryParse(_value, NumberStyles.Float, CultureInfo.InvariantCulture, out double raw))
@@ -112,6 +153,32 @@ namespace RtcmSharp.NMEA
             }
 
             return value;
+        }
+
+        private static string ConvertDecimalToDms(LatLonAlt _value)
+        {
+            string dms = string.Empty;
+            double lat = Math.Abs(_value.m_Latitude);
+            char latHemis = _value.m_Latitude >= 0.0 ? 'N' : 'S';
+
+            int latDegree = (int)lat;
+            double latMinutes = (lat - latDegree) * 60.0;
+            double latDms = (latDegree * 100) + latMinutes;
+
+            dms += latDms.ToString("0.0000");
+            dms += ',' + latHemis.ToString() + ',';
+
+            double lon = Math.Abs(_value.m_Longitude);
+            char lonHemis = _value.m_Longitude >= 0.0 ? 'E' : 'W';
+
+            int lonDegree = (int)lon;
+            double lonMinutes = (lon - lonDegree) * 60.0;
+            double lonDms = (lonDegree * 100) + lonMinutes;
+
+            dms += lonDms.ToString("0.0000");
+            dms += ',' + lonHemis.ToString() + ',';
+
+            return dms;
         }
     }
 }

@@ -28,5 +28,6 @@ class Program
         };
 
         await appInstance.RunAsync();
+        //appInstance.Run();
     }
 }

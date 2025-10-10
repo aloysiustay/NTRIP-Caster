@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using CasterServer.Client;
 using CasterServer.Mountpoint;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
@@ -8,7 +9,7 @@ namespace CasterServer.GUI
     public class WebGUI
     {
         private IHost? m_Host;
-        public WebGUI(MountpointManager _mountpointManager, CancellationTokenSource _cancel)
+        public WebGUI(ILoggerFactory _loggerFactory, MountpointManager _mountpointManager, ClientManager _clientManager, CancellationTokenSource _cancel)
         {
             m_Host = Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -17,7 +18,9 @@ namespace CasterServer.GUI
 
                     webBuilder.ConfigureServices(services =>
                     {
+                        services.AddSingleton(_loggerFactory);
                         services.AddSingleton(_mountpointManager);
+                        services.AddSingleton(_clientManager);
                         services.AddCors(options =>
                         {
                             options.AddPolicy("AllowAll", builder =>

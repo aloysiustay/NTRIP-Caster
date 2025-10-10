@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Security.Cryptography;
 using RtcmSharp.RtcmDatafields;
 using RtcmSharp.RtcmDataFields;
 
@@ -7,6 +8,7 @@ namespace RtcmSharp.RtcmMessageTypes
     public abstract class BaseMessage
     {
         public DF_001_UINT_12 m_MessageType { get;set; }
+
         public string Describe(bool _verbose = false)
         {
             var sb = new System.Text.StringBuilder();

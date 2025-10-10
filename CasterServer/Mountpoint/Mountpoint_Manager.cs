@@ -43,9 +43,9 @@ namespace CasterServer.Mountpoint
             }
             return result;
         }
-        public List<KD_Candidate> SearchNearestMountpointsWithinRadius(double _radius, LatLonAlt _target)
+        public List<KD_Candidate> SearchNearestMountpointsWithinRadius(double _radiusKM, LatLonAlt _target)
         {
-            return m_MountpointTree.SearchClosestMountpointWithinRadius(_radius * 1000, _target);
+            return m_MountpointTree.SearchClosestMountpointWithinRadius(_radiusKM * 1000.0, _target);
         }
         public void Dispose()
         {

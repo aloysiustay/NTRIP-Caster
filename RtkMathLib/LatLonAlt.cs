@@ -17,5 +17,24 @@
             m_Longitude = _lon;
             m_Altitude = _alt;
         }
+
+        //public ECEF ConvertToECEF()
+        //{
+        //    double lat = m_Latitude * Math.PI / 180.0;
+        //    double lon = m_Longitude * Math.PI / 180.0;
+
+        //    double sinLat = Math.Sin(lat);
+        //    double cosLat = Math.Cos(lat);
+        //    double sinLon = Math.Sin(lon);
+        //    double cosLon = Math.Cos(lon);
+
+        //    double N = a / Math.Sqrt(1.0 - e2 * sinLat * sinLat);
+
+        //    double x = (N + m_Altitude) * cosLat * cosLon;
+        //    double y = (N + m_Altitude) * cosLat * sinLon;
+        //    double z = (N * (1.0 - e2) + m_Altitude) * sinLat;
+
+        //    return new ECEF(x, y, z);
+        //}
     }
 }

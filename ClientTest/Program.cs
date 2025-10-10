@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using ClientTest;
 using RtcmSharp;
+using RtcmSharp.NMEA;
 using RtcmSharp.RtcmMessageTypes;
 using RtcmSharp.RtcmNetwork;
 class Program
@@ -42,32 +44,46 @@ class Program
 
                 Console.WriteLine(sourceTable);
             }
-            else
+            else if (command == "AUTO")
             {
                 streamer = new RtcmStreamer("localhost", 2101, command);
                 streamer.StartStream(Utils.FormatMountpointRequest("aloytaytay-at-gmail.com:password", command));
+                
                 long readIndex = streamer.m_Buffer.GetCurrentHead();
-
                 cts = new CancellationTokenSource();
-
                 Console.CancelKeyPress += (sender, e) =>
                 {
                     e.Cancel = true;
                     cts.Cancel();
                 };
 
-                _ = SendGPGGA();
+                Task SendTask = SendGPGGA();
 
                 while (!cts.IsCancellationRequested)
                 {
-                    RtcmPacket packet = new RtcmPacket();
-                    if (streamer.m_Buffer.Read(ref readIndex, out packet))
-                    {
-                        Console.WriteLine("Received: " + packet.GetMessageType());
-                        //BaseMessage? message = RtcmUtils.ProcessMessage(packet);
-                        //if (message != null)
-                        //    Console.WriteLine(message.Describe());
-                    }
+                    Console.Write("Enter LatLon: ");
+                    string? latlon = Console.ReadLine();
+                    if (latlon == null)
+                        break;
+                    var parts = latlon.Split(' ');
+                    GPGGA data;
+                    GPGGA.TryParse(gpgga, out data);
+                    double lat;
+                    double.TryParse(parts[0], NumberStyles.Float, CultureInfo.InvariantCulture, out lat);
+                    double lon;
+                    double.TryParse(parts[1], NumberStyles.Float, CultureInfo.InvariantCulture, out lon);
+
+                    data.m_Coordinates = new RtkMathLib.LatLonAlt(lat, lon, 0.0);
+                    gpgga = data.FormatMessage();
+
+                    //RtcmPacket packet = new RtcmPacket();
+                    //if (streamer.m_Buffer.Read(ref readIndex, out packet))
+                    //{
+                    //    Console.WriteLine("Received: " + packet.GetMessageType());
+                    //    BaseMessage? message = RtcmUtils.ProcessMessage(packet);
+                    //    if (message != null)
+                    //        Console.WriteLine(message.Describe());
+                    //}
                 }
 
                 await streamer.Dispose();

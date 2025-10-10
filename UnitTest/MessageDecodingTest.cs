@@ -1,5 +1,7 @@
 ﻿using RtcmSharp.RtcmMessageTypes;
+using RtcmSharp.NMEA;
 using Xunit;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 namespace UnitTest
 {
     public class RtcmSharpTest
@@ -51,5 +53,17 @@ namespace UnitTest
             Assert.Equal(0, failed);
         }
 
+        [Fact]
+        public void GPGGAMessageLatLonTest()
+        {
+            string gpgga = "$GPGGA,202530.00,5109.0262,N,11401.8407,W,5,40,0.5,1097.36,M,-17.00,M,18,TSTR*61\n";
+
+            if(GPGGA.TryParse(gpgga, out GPGGA _data))
+            {
+                Console.WriteLine("Expected: " + gpgga);
+                Console.WriteLine("Actual: " + _data.FormatMessage());
+                Assert.True(GPGGA.ValidateChecksum(_data.FormatMessage()));
+            }
+        }
     }
 }

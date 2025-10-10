@@ -19,6 +19,10 @@ namespace CasterServer.Mountpoint
         }
         public void StreamRTCM()
         {
+            if (m_Streamer.IsStreamActive)
+                return;
+
+            Console.WriteLine($"Session started for {m_Info.m_Mountpoint}");
             m_Streamer.StartStream(NetworkUtils.FormatMountpointRequest("aloytaytay-at-gmail.com:password", m_Info.m_Mountpoint));
         }
 

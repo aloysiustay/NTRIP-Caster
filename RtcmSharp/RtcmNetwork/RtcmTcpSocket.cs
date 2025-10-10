@@ -1,15 +1,13 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RtcmSharp.RtcmNetwork
 {
     public class RtcmTcpSocket
     {
-        string m_Host;
-        int m_Port;
+        public string m_Host;
+        public int m_Port;
         protected Socket m_Socket;
         protected byte[] m_Buffer;
         private StringBuilder m_LineBuffer = new StringBuilder();
@@ -79,6 +77,8 @@ namespace RtcmSharp.RtcmNetwork
 
         public async Task<bool> SendAsync(byte[] _data)
         {
+            if (m_Disposed)
+                return false;
             try
             {
                 int totalSent = 0;
@@ -103,6 +103,9 @@ namespace RtcmSharp.RtcmNetwork
 
         public async Task<byte[]?> ReceiveAsync()
         {
+            if (m_Disposed)
+                return null;
+
             try
             {
                 int bytesRead = await m_Socket.ReceiveAsync(m_Buffer, SocketFlags.None);
