@@ -5,6 +5,7 @@ using CasterServer.Mountpoint;
 using System.Runtime.CompilerServices;
 using RtcmSharp;
 using RtkMathLib;
+using CasterServer.Client;
 
 namespace CasterServer.GUI
 {
@@ -13,16 +14,18 @@ namespace CasterServer.GUI
     public class CasterController : ControllerBase
     {
         private readonly MountpointManager m_MountpointManager;
-        public CasterController(MountpointManager mountpointManager)
+        private readonly ClientManager m_ClientManager;
+        public CasterController(MountpointManager mountpointManager, ClientManager clientManager)
         {
             m_MountpointManager = mountpointManager;
+            m_ClientManager = clientManager;
         }
 
         [HttpGet("mountpointList")]
         public IActionResult GetMountpoints()
         {
             var mountpoints = m_MountpointManager.GetMountpoints();
-
+            Console.WriteLine(mountpoints.Count);
             var stations = new List<MountpointInfoDTO>();
 
             foreach (var kvp in mountpoints)
@@ -98,6 +101,14 @@ namespace CasterServer.GUI
             }
 
             return StatusCode(500, "Failed to retrieve mountpoint status snapshot.");
+        }
+
+        [HttpGet("clientList")]
+        public IActionResult GetClients()
+        {
+            List<SessionInfo> sessionInfo = m_ClientManager.GetSessionInfo();
+
+            return Ok(new { sessionInfo = sessionInfo });
         }
     }
 }

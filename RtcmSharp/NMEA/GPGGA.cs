@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Drawing;
+using System.Globalization;
 using CasterServer.Clock;
 using RtkMathLib;
 
@@ -179,6 +180,21 @@ namespace RtcmSharp.NMEA
             dms += ',' + lonHemis.ToString() + ',';
 
             return dms;
+        }
+
+        public static bool operator ==(GPGGA _a, GPGGA _b)
+        {
+            if (ReferenceEquals(_a, _b))
+                return true;
+            if (_a is null || _b is null)
+                return false;
+
+            return _a.m_Coordinates == _b.m_Coordinates;
+        }
+
+        public static bool operator !=(GPGGA _a, GPGGA _b)
+        {
+            return !(_a == _b);
         }
     }
 }

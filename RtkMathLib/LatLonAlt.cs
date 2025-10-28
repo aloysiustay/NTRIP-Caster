@@ -2,9 +2,9 @@
 {
     public struct LatLonAlt
     {
-        public double m_Latitude;
-        public double m_Longitude;
-        public double m_Altitude;
+        public double m_Latitude { get; set; }
+        public double m_Longitude { get; set; }
+        public double m_Altitude { get; set; }
         public LatLonAlt()
         {
             m_Latitude = 0.0;
@@ -16,6 +16,15 @@
             m_Latitude = _lat;
             m_Longitude = _lon;
             m_Altitude = _alt;
+        }
+
+        public static bool operator ==(LatLonAlt _a, LatLonAlt _b)
+        {
+            return _a.m_Latitude == _b.m_Latitude && _a.m_Longitude == _b.m_Longitude && _a.m_Altitude == _b.m_Altitude;
+        }
+        public static bool operator !=(LatLonAlt _a, LatLonAlt _b)
+        {
+            return !(_a == _b);
         }
 
         //public ECEF ConvertToECEF()

@@ -34,7 +34,7 @@ namespace CasterServer.GUI
                         services.AddControllers();
                         services.AddEndpointsApiExplorer();    // Required
                         services.AddSwaggerGen();
-                        services.AddSignalR();
+                        //services.AddSignalR();
                     });
 
                     webBuilder.Configure(app =>
@@ -59,7 +59,7 @@ namespace CasterServer.GUI
 
                         app.UseEndpoints(endpoints =>
                         {
-                            endpoints.MapHub<CasterHub>("/casterHub");
+                            //endpoints.MapHub<CasterHub>("/casterHub/mountpoint");
                             endpoints.MapControllers();
                         });
                     });

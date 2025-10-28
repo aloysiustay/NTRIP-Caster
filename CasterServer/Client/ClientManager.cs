@@ -24,7 +24,8 @@ namespace CasterServer.Client
             while (!m_CancellationToken.Token.IsCancellationRequested)
             {
                 var client = await m_Listener.AcceptTcpClientAsync();
-                var session = new ClientSession(client, RemoveSession, m_MountpointManager);
+                int numClients = m_Sessions.Count;
+                var session = new ClientSession(++numClients, client, RemoveSession, m_MountpointManager);
 
                 lock (m_Sessions)
                     m_Sessions.Add(session);
@@ -49,6 +50,16 @@ namespace CasterServer.Client
             {
                 session.Dispose();
             }
+        }
+
+        public List<SessionInfo> GetSessionInfo()
+        {
+            List<SessionInfo> info = new List<SessionInfo>();
+            foreach(ClientSession sess in m_Sessions)
+            {
+                info.Add(sess.m_SessionInfo);
+            }
+            return info;
         }
     }
 }

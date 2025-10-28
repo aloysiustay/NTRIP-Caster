@@ -10,8 +10,17 @@ using System.Reflection;
 
 namespace CasterServer.Client
 {
+    public class SessionInfo
+    {
+        public int m_ClientID { get; set; } = 0;
+        public string m_Mountpoint { get; set; } = string.Empty;
+        public double m_Latitude { get; set; } = 0.0;
+        public double m_Longitude { get; set; } = 0.0;
+        public double m_Altitude { get; set; } = 0.0;
+    }
     public class ClientSession
     {
+        public SessionInfo m_SessionInfo = new();
         private readonly Action<ClientSession> m_OnDisconnect;
         private readonly MountpointManager m_MountpointManager;
         private readonly RtcmTcpSocket m_Socket;
@@ -27,8 +36,9 @@ namespace CasterServer.Client
 
         private GPGGA? m_GPGGA = null;
 
-        public ClientSession(RtcmTcpSocket _socket, Action<ClientSession> _onDisconnect, MountpointManager _mountpointManager)
+        public ClientSession(int _clientID, RtcmTcpSocket _socket, Action<ClientSession> _onDisconnect, MountpointManager _mountpointManager)
         {
+            m_SessionInfo.m_ClientID = _clientID;
             m_Socket = _socket;
             m_OnDisconnect = _onDisconnect;
             m_MountpointManager = _mountpointManager;
@@ -77,27 +87,49 @@ namespace CasterServer.Client
             if (_mountpoint == "AUTO")
             {
                 GPGGA? gpgga = await GetGPGGA();
-                if (gpgga != null)
+                bool change = m_GPGGA != gpgga;
+                if (change)
                 {
-                    var closest = m_MountpointManager.SearchNearestMountpoints(1, gpgga.m_Coordinates);
-                    m_Mountpoint = m_MountpointManager.GetMountpointSession(closest.First().m_Mountpoint);
-                    if(m_Mountpoint != null)
+                    m_GPGGA = gpgga;
+                    m_SessionInfo.m_Latitude = m_GPGGA.m_Coordinates.m_Latitude;
+                    m_SessionInfo.m_Longitude = m_GPGGA.m_Coordinates.m_Longitude;
+                    m_SessionInfo.m_Altitude = m_GPGGA.m_Coordinates.m_Altitude;
+
+                    var closest = m_MountpointManager.SearchNearestMountpoints(1, m_GPGGA.m_Coordinates);
+                    MountpointSession? mountpoint = m_MountpointManager.GetMountpointSession(closest.First().m_Mountpoint);
+
+                    if (mountpoint != null)
+                    {
+                        if(m_Mountpoint != null)
+                        {
+                            m_Mountpoint.UnregisterClient();
+                        }
+
+                        m_Mountpoint = mountpoint;
                         m_ReadIndex = m_Mountpoint.m_Streamer.m_Buffer.GetCurrentHead();
+
+                        m_Mountpoint.StreamRTCM();
+                        m_Mountpoint.RegisterClient();
+                        m_SessionInfo.m_Mountpoint = _mountpoint + " " + m_Mountpoint.m_Info.m_Mountpoint;
+                    }
                     m_UsingClosest = true;
                 }
             }
             else
             {
-                m_Mountpoint = m_MountpointManager.GetMountpointSession(_mountpoint);
+                if(m_Mountpoint == null)
+                {
+                    m_Mountpoint = m_MountpointManager.GetMountpointSession(_mountpoint);
+                    if (m_Mountpoint != null)
+                    {
+                        m_Mountpoint.RegisterClient();
+                        m_Mountpoint.StreamRTCM();
+                        m_SessionInfo.m_Mountpoint = m_Mountpoint.m_Info.m_Mountpoint;
+                    }
+                }
             }
 
-            if (m_Mountpoint != null)
-            {
-                m_ReadIndex = m_Mountpoint.m_Streamer.m_Buffer.GetCurrentHead();
-                m_Mountpoint.StreamRTCM();
-                return true;
-            }
-            return false;
+            return m_Mountpoint != null;
         }
         private async Task ProcessNtripV1()
         {
@@ -236,6 +268,7 @@ namespace CasterServer.Client
             m_CancellationToken.Dispose();
             m_Socket.Dispose();
             m_OnDisconnect(this);
+            m_Mountpoint?.UnregisterClient();
         }
     }
 }

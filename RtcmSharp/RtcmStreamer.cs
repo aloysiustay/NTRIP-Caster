@@ -1,12 +1,13 @@
 ﻿using RtcmSharp.RtcmMessageTypes;
 using RtcmSharp.RtcmNetwork;
 using System.Collections.Concurrent;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace RtcmSharp
 {
     public class RtcmStreamer
     {
-        private string m_Mountpoint;
+        //private string m_Mountpoint;
         private CancellationTokenSource? m_StreamToken = null;
         private CancellationTokenSource? m_DecodeToken = null;
         private Task? m_StreamTask = null;
@@ -19,15 +20,21 @@ namespace RtcmSharp
         public RtcmParser m_Parser { get; set; }
 
         public RtcmTcpSocket m_TcpSocket;
-        public ConcurrentDictionary<ushort, BaseMessage> m_Messages = new();
+        //public ConcurrentDictionary<ushort, BaseMessage> m_Messages = new();
+        public MountpointSessionInfo m_SessionInfo = new();
 
         public RtcmStreamer(string _host, int _port, string _mountpoint)
         {
-            m_Mountpoint = _mountpoint;
+            m_SessionInfo.m_Mountpoint = _mountpoint;
             m_Buffer = new RtcmCircularBuffer(512);
             m_Parser = new RtcmParser();
             m_TcpSocket = new RtcmTcpSocket(_host, _port, 4096);
         }
+        public void Reintialise(string _host, int _port)
+        {
+            m_TcpSocket = new RtcmTcpSocket(_host, _port, 4096);
+        }
+
         public void StartStream(string _request)
         {
             if (m_StreamToken != null)
@@ -47,7 +54,6 @@ namespace RtcmSharp
         public async Task Dispose()
         {
             await StopStreamAsync();
-            await StopDecodingAsync();
         }
         public async Task DecodeAsync(CancellationToken _token)
         {
@@ -62,7 +68,9 @@ namespace RtcmSharp
                     BaseMessage? message = RtcmUtils.ProcessMessage(packet);
                     if(message != null)
                     {
-                        m_Messages[message.m_MessageType.GetRawValue()] = message;
+                        MessageSessionInfo info = m_SessionInfo.m_Messages[message.m_MessageType.GetRawValue()];
+                        info.m_Message = message;
+                        ++info.m_MessageCount;
                     }
                 }
                 else
