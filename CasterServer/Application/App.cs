@@ -14,6 +14,7 @@ namespace CasterServer.Application
     public class App
     {
         public LogManager m_LogManager;
+        public ConnectionManager m_ConnectionManager;
         public MountpointManager m_MountpointManager;
         public ClientManager m_ClientManager;
         public CancellationTokenSource m_CancellationToken = new CancellationTokenSource();
@@ -23,12 +24,13 @@ namespace CasterServer.Application
             m_LogManager = new LogManager();
             m_MountpointManager = new MountpointManager();
             m_ClientManager = new ClientManager(m_MountpointManager);
+            m_ConnectionManager = new ConnectionManager(m_ClientManager, m_MountpointManager);
             m_CancellationToken = new CancellationTokenSource();
             m_WebGUI = new WebGUI(m_LogManager.m_LogFactory, m_MountpointManager, m_ClientManager, m_CancellationToken);
         }
         public void Init()
         {
-            _ = m_ClientManager.StartAsync();
+            _ = m_ConnectionManager.StartAsync();
             //var session = m_MountpointManager.GetMountpointSession("AGD_CORP");
             //session?.StreamRTCM();
             //session?.DecodeRTCM();
@@ -55,11 +57,11 @@ namespace CasterServer.Application
         }
         public void Run()
         {
-            //while (!m_CancellationToken.Token.IsCancellationRequested)
-            //{
-            //    var session = m_MountpointManager.GetMountpointSession("AGD_CORP");
-            //    session?.PrintMessages();
-            //}
+            while (!m_CancellationToken.Token.IsCancellationRequested)
+            {
+                //var session = m_MountpointManager.GetMountpointSession("AGD_CORP");
+                //session?.PrintMessages();
+            }
         }
     }
 }

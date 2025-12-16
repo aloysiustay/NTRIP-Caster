@@ -14,7 +14,7 @@ namespace RtcmSharp.RtcmNetwork
         private bool m_Disposed;
         public RtcmTcpSocket(string _host, int _port, int _bufferSize)
         {
-            m_Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); ;
+            m_Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             m_Buffer = new byte[_bufferSize];
             m_Host = _host;
             m_Port = _port;

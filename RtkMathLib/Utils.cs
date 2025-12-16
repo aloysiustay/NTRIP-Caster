@@ -4,10 +4,8 @@ namespace RtkMathLib
 {
     public static class Utils
     {
-        public static double DegToRad(double degrees)
-        {
-            return degrees * Math.PI / 180.0;
-        }
+        public static double RadToDeg(double _rad) => _rad * (180.0 / Math.PI);
+        public static double DegToRad(double _deg) => _deg * (Math.PI / 180.0);
 
         public static double HaversineDistance(LatLonAlt _a, LatLonAlt _b)
         {

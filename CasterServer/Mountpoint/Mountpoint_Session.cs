@@ -1,6 +1,7 @@
-﻿using RtcmSharp;
-using CasterServer.Network;
+﻿using CasterServer.Network;
+using RtcmSharp;
 using RtcmSharp.RtcmMessageTypes;
+using RtcmSharp.RtcmNetwork;
 
 namespace CasterServer.Mountpoint
 {
@@ -11,18 +12,28 @@ namespace CasterServer.Mountpoint
         public MountpointData m_Info { get; set; }
         public RtcmStreamer m_Streamer;
         public int m_NumClientConnected = 0;
+        private bool m_Persistant;
         public MountpointSession(MountpointData _data)
         {
             m_Host = _data.m_Host;
             m_Port = _data.m_Port;
             m_Info = _data;
+            m_Persistant = false;
             m_Streamer = new RtcmStreamer(m_Host, m_Port, m_Info.m_Mountpoint);
+        }
+        public MountpointSession(RtcmTcpSocket _client, MountpointData _data)
+        {
+            m_Host = _data.m_Host;
+            m_Port = _data.m_Port;
+            m_Info = _data;
+            m_Persistant = true;
+            m_Streamer = new RtcmStreamer(_client, m_Info.m_Mountpoint);
         }
         public void RegisterClient()
         {
             ++m_NumClientConnected;
             Console.WriteLine($"Number of Registered Clients for {m_Info.m_Mountpoint}: {m_NumClientConnected}");
-        }
+        }//
         public async void UnregisterClient()
         {
             //mutex
@@ -30,7 +41,7 @@ namespace CasterServer.Mountpoint
                 return;
 
             --m_NumClientConnected;
-            if(m_NumClientConnected <= 0)
+            if(m_NumClientConnected <= 0 && !m_Persistant)
             {
                 Console.WriteLine($"Session stopped for {m_Info.m_Mountpoint}");
                 await m_Streamer.Dispose();

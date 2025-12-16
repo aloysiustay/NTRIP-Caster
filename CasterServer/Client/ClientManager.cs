@@ -8,40 +8,32 @@ namespace CasterServer.Client
     public class ClientManager
     {
         private readonly MountpointManager m_MountpointManager;
-        private readonly RtcmTcpListener m_Listener;
         private readonly List<ClientSession> m_Sessions = new();
 
         CancellationTokenSource m_CancellationToken = new CancellationTokenSource();
         public ClientManager(MountpointManager _mountpointManager) 
         {
             m_MountpointManager = _mountpointManager;
-            m_Listener = new RtcmTcpListener(2101);
         }
-        public async Task StartAsync()
+
+        public void CreateSession(RtcmTcpSocket _client, string _mountpoint)
         {
-            Console.WriteLine("NTRIP server listening...");
+            int numClients = m_Sessions.Count;
+            var session = new ClientSession(++numClients, _client, RemoveSession, m_MountpointManager);
 
-            while (!m_CancellationToken.Token.IsCancellationRequested)
-            {
-                var client = await m_Listener.AcceptTcpClientAsync();
-                int numClients = m_Sessions.Count;
-                var session = new ClientSession(++numClients, client, RemoveSession, m_MountpointManager);
+            lock (m_Sessions)
+                m_Sessions.Add(session);
 
-                lock (m_Sessions)
-                    m_Sessions.Add(session);
+            Console.WriteLine($"Client connected. Active: {m_Sessions.Count}");
 
-                Console.WriteLine($"Client connected. Active: {m_Sessions.Count}");
-
-                _ = session.StartAsync();
-
-            }
+            _ = session.StartAsync(_mountpoint);
         }
         private void RemoveSession(ClientSession _session)
         {
             lock (_session)
                 m_Sessions.Remove(_session);
 
-            Console.WriteLine($"Client removed. Active: {m_Sessions.Count}");
+            Console.WriteLine($"Active: {m_Sessions.Count}");
         }
         public void Dispose()
         {

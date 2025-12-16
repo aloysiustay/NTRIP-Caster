@@ -57,6 +57,27 @@ namespace CasterServer.Mountpoint
 
             return node;
         }
+        public void Insert(string _mountpoint, LatLonAlt _coordinate)
+        {
+            m_Root = InsertRecursive(m_Root, _mountpoint, _coordinate, 0);
+        }
+        private KD_Node InsertRecursive(KD_Node? _node, string _mountpoint, LatLonAlt _coordinate, int _depth)
+        {
+            if (_node == null)
+                return new KD_Node(_depth, _mountpoint, _coordinate);
+
+            int axis = _depth % 2;
+
+            double targetValue = (axis == 0) ? _coordinate.m_Latitude : _coordinate.m_Longitude;
+            double nodeValue = (axis == 0) ? _node.m_Coordinate.m_Latitude : _node.m_Coordinate.m_Longitude;
+
+            if (targetValue < nodeValue)
+                _node.m_Left = InsertRecursive(_node.m_Left, _mountpoint, _coordinate, _depth + 1);
+            else
+                _node.m_Right = InsertRecursive(_node.m_Right, _mountpoint, _coordinate, _depth + 1);
+
+            return _node;
+        }
         public PriorityQueue<KD_Candidate, double> SearchClosestMountpoint(int _numMountpoints, LatLonAlt _target)
         {
             PriorityQueue<KD_Candidate, double> queue = new();

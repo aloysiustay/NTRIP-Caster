@@ -30,12 +30,19 @@ namespace RtcmSharp
             m_Parser = new RtcmParser();
             m_TcpSocket = new RtcmTcpSocket(_host, _port, 4096);
         }
+        public RtcmStreamer(RtcmTcpSocket _client, string _mountpoint)
+        {
+            m_SessionInfo.m_Mountpoint = _mountpoint;
+            m_Buffer = new RtcmCircularBuffer(512);
+            m_Parser = new RtcmParser();
+            m_TcpSocket = _client;
+        }
         public void Reintialise(string _host, int _port)
         {
             m_TcpSocket = new RtcmTcpSocket(_host, _port, 4096);
         }
 
-        public void StartStream(string _request)
+        public void StartStream(string? _request)
         {
             if (m_StreamToken != null)
                 return;
@@ -80,11 +87,13 @@ namespace RtcmSharp
             }
         }
 
-        public async Task StreamAsync(string _request, CancellationToken _token)
+        public async Task StreamAsync(string? _request, CancellationToken _token)
         {
-            await m_TcpSocket.ConnectAsync();
-            await m_TcpSocket.SendAsync(_request);
-
+            if(_request != null)
+            {
+                await m_TcpSocket.ConnectAsync();
+                await m_TcpSocket.SendAsync(_request);
+            }
             while (!_token.IsCancellationRequested)
             {
                 byte[]? result = await m_TcpSocket.ReceiveAsync();

@@ -8,9 +8,9 @@ namespace RtkMathLib
 {
     public struct ECEF
     {
-        private const double a = 6378137.0;                     
-        private const double f = 1.0 / 298.257223563;           
-        private const double e2 = f * (2.0 - f);
+        public const double a = 6378137.0;
+        public const double f = 1.0 / 298.257223563;
+        public const double e2 = f * (2.0 - f);
 
         public double m_X { get; }
         public double m_Y { get; }

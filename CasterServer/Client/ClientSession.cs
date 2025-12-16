@@ -44,40 +44,15 @@ namespace CasterServer.Client
             m_MountpointManager = _mountpointManager;
             m_ReadIndex = 0;
         }
-        public async Task StartAsync()
+        public async Task StartAsync(string _mountpoint)
         {
-            if(!await ProcessRequest())
-            {
-                await m_Socket.SendAsync("400 BAD REQUEST\r\n");
-                Dispose(); 
-                return;
-            }
-
+            await ProcessMountpoint(_mountpoint);
             if (m_NtripVersion == 0)
                 await ProcessNtripV1();
             else
                 await ProcessNtripV2();
 
             Dispose();
-        }
-        private async Task<bool> ProcessRequest()
-        {
-            var requestLine = await m_Socket.ReceiveLineAsync();
-            if (requestLine == null)
-                return false;
-
-            var parts = requestLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            if (parts[0] != "GET" || parts.Length < 2 || !parts[2].Contains("HTTP/"))
-                return false;
-
-            // Skip headers
-            string? line;
-            while (!string.IsNullOrEmpty(line = await m_Socket.ReceiveLineAsync())) { }
-
-            string mountpoint = parts[1].TrimStart('/');
-            await ProcessMountpoint(mountpoint);
-
-            return true;
         }
         private async Task<bool> ProcessMountpoint(string _mountpoint)
         {
@@ -117,11 +92,12 @@ namespace CasterServer.Client
             }
             else
             {
-                if(m_Mountpoint == null)
+                if (m_Mountpoint == null)
                 {
                     m_Mountpoint = m_MountpointManager.GetMountpointSession(_mountpoint);
                     if (m_Mountpoint != null)
                     {
+                        m_ReadIndex = m_Mountpoint.m_Streamer.m_Buffer.GetCurrentHead();
                         m_Mountpoint.RegisterClient();
                         m_Mountpoint.StreamRTCM();
                         m_SessionInfo.m_Mountpoint = m_Mountpoint.m_Info.m_Mountpoint;
@@ -269,6 +245,7 @@ namespace CasterServer.Client
             m_Socket.Dispose();
             m_OnDisconnect(this);
             m_Mountpoint?.UnregisterClient();
+            Console.WriteLine($"Client: {m_SessionInfo.m_ClientID} disconnected ");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CasterServer.GUI
             m_Host = Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("http://localhost:18080");
+                    webBuilder.UseUrls("http://0.0.0.0:18080");
 
                     webBuilder.ConfigureServices(services =>
                     {

@@ -1,12 +1,17 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using ClientTest;
 using RtcmSharp;
 using RtcmSharp.NMEA;
 using RtcmSharp.RtcmMessageTypes;
 using RtcmSharp.RtcmNetwork;
+
 class Program
 {
+    const string CASTER_IP = "http://sitdev.dyndns.org";
+    const int CASTER_PORT = 9287;
     static string gpgga = "$GPGGA,202530.00,5109.0262,N,11401.8407,W,5,40,0.5,1097.36,M,-17.00,M,18,TSTR*61\n";
     static RtcmStreamer? streamer;
     static CancellationTokenSource? cts;
@@ -21,6 +26,9 @@ class Program
     static async Task Main(string[] args)
     {
         Task.Delay(5000).Wait();
+        var uri = new Uri(CASTER_IP);
+        var ip = Dns.GetHostAddresses(uri.Host)
+                    .First(a => a.AddressFamily == AddressFamily.InterNetwork);
         while (true)
         {
             Console.Write("Enter Command: ");
@@ -28,7 +36,7 @@ class Program
 
             if (command == "sourcetable")
             {
-                RtcmTcpSocket socket = new RtcmTcpSocket("localhost", 2101, 4096);
+                RtcmTcpSocket socket = new RtcmTcpSocket(ip.ToString(), CASTER_PORT, 4096);
                 await socket.ConnectAsync();
                 await socket.SendAsync(Utils.FormatMountpointRequest("aloytaytay-at-gmail.com:password"));
                 string sourceTable = string.Empty;
@@ -46,7 +54,7 @@ class Program
             }
             else if (command == "AUTO")
             {
-                streamer = new RtcmStreamer("localhost", 2101, command);
+                streamer = new RtcmStreamer(CASTER_IP, CASTER_PORT, command);
                 streamer.StartStream(Utils.FormatMountpointRequest("aloytaytay-at-gmail.com:password", command));
                 
                 long readIndex = streamer.m_Buffer.GetCurrentHead();
@@ -76,17 +84,40 @@ class Program
                     data.m_Coordinates = new RtkMathLib.LatLonAlt(lat, lon, 0.0);
                     gpgga = data.FormatMessage();
 
-                    //RtcmPacket packet = new RtcmPacket();
-                    //if (streamer.m_Buffer.Read(ref readIndex, out packet))
-                    //{
-                    //    Console.WriteLine("Received: " + packet.GetMessageType());
-                    //    BaseMessage? message = RtcmUtils.ProcessMessage(packet);
-                    //    if (message != null)
-                    //        Console.WriteLine(message.Describe());
-                    //}
+                    RtcmPacket packet = new RtcmPacket();
+                    while (streamer.m_Buffer.Read(ref readIndex, out packet))
+                    {
+                        Console.WriteLine("Received: " + packet.GetMessageType());
+                        BaseMessage? message = RtcmUtils.ProcessMessage(packet);
+                        if (message != null)
+                            Console.WriteLine(message.Describe());
+                    }
                 }
 
                 await streamer.Dispose();
+            }
+            else
+            {
+                streamer = new RtcmStreamer(CASTER_IP, CASTER_PORT, command);
+                streamer.StartStream(Utils.FormatMountpointRequest("aloytaytay-at-gmail.com:password", command));
+                long readIndex = streamer.m_Buffer.GetCurrentHead();
+                cts = new CancellationTokenSource();
+                Console.CancelKeyPress += (sender, e) =>
+                {
+                    e.Cancel = true;
+                    cts.Cancel();
+                };
+                while (!cts.IsCancellationRequested)
+                {
+                    RtcmPacket packet = new RtcmPacket();
+                    if (streamer.m_Buffer.Read(ref readIndex, out packet))
+                    {
+                        Console.WriteLine("Received: " + packet.GetMessageType());
+                        BaseMessage? message = RtcmUtils.ProcessMessage(packet);
+                        //if (message != null)
+                        //    Console.WriteLine(message.Describe());
+                    }
+                }
             }
         }
     }

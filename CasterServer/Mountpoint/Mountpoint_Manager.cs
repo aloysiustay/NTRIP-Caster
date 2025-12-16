@@ -1,5 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using CasterServer.Network;
+using RtcmSharp;
+using RtcmSharp.RtcmMessageTypes;
+using RtcmSharp.RtcmNetwork;
 using RtkMathLib;
 
 namespace CasterServer.Mountpoint
@@ -21,6 +24,38 @@ namespace CasterServer.Mountpoint
                 m_SourceTable += mountpoint.ToString() + "\r\n";
             }
             m_MountpointTree.InitTree(mountpoints);
+        }
+        public async Task AddMountpointClient(RtcmTcpSocket _client, string _mountpoint)
+        {
+            MountpointData data = new MountpointData();
+            data.m_Mountpoint = _mountpoint;
+            MountpointSession session = new MountpointSession(_client, data);
+            m_Mountpoints.TryAdd(data.m_Mountpoint, session);
+            session.m_Streamer.StartStream(null);
+            var index = session.m_Streamer.m_Buffer.GetCurrentHead();
+            bool positionDecoded= false;
+            RtcmPacket packet;
+            while(!positionDecoded)
+            {
+                if (!session.m_Streamer.m_Buffer.Read(ref index, out packet))
+                    continue;
+
+                ushort messageType = packet.GetMessageType();
+                if (messageType == 1005 || messageType == 1006)
+                {
+                    BaseMessage? baseMessage = RtcmUtils.ProcessMessage(packet);
+                    if (baseMessage != null)
+                    {
+                        var message = (Rtcm1005)baseMessage;
+                        LatLonAlt coord = new LatLonAlt(new ECEF(message.m_AntennaECEF_X.GetScaledValue(), message.m_AntennaECEF_Y.GetScaledValue(), message.m_AntennaECEF_Z.GetScaledValue()));
+                        data.m_Coordinate = coord;
+                        break;
+                    }
+                }
+            }
+            m_MountpointTree.Insert(data.m_Mountpoint, data.m_Coordinate);
+            m_SourceTable += data.ToString() + "\r\n";
+            Console.WriteLine(_mountpoint + "successfully added");
         }
 
         public MountpointSession? GetMountpointSession(string _mountpoint)
